@@ -38,7 +38,7 @@ alert('Привет, '+ name)
 alert("Задание 2 нажмите ок чтобы продолжить")
 const DATE = 2024
 let date_of_born = prompt('Введите свою дату рождения')
-alert('Сейчас вам: '+ DATE-date_of_born)
+alert('Сейчас вам: '+ DATE - date_of_born)
 
 
 alert("Задание 3 нажмите ок чтобы продолжить")
