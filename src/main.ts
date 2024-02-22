@@ -1,5 +1,5 @@
 import './style.css'
-// // console.log('Hello World!!!')
+console.log('Hello World!!!')
 // // // можно переназначить var
 // // var a = 10
 // // console.log(a)
