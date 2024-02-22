@@ -1,4 +1,4 @@
-import './style.scss'
+import './style.css'
 // // console.log('Hello World!!!')
 // // // можно переназначить var
 // // var a = 10
