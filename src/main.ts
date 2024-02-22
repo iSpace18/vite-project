@@ -1,5 +1,354 @@
 import './style.css'
-console.log('Hello World!!!')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let nemo = ('makaka')
+// let p = ('Obezyana')
+// console.log('Hello World!!!')
+// console.log(`Hello, ${nemo} ты ${p}`)
+// let num1 = 10
+// let num2 = 10
+// let num3 = 1
+// console.log(num2 / num3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function getHistory(){
+//   return document.getElementById("history-value").innerText;
+// }
+// function printHistory(num: string){
+//   document.getElementById("history-value").innerText=num;
+// }
+// function getOutput(){
+//   return document.getElementById("output-value").innerText;
+// }
+// function printOutput(num: string | number){
+//   if(num==""){
+//       document.getElementById("output-value").innerText=num;
+//   }
+//   else{
+//       document.getElementById("output-value").innerText=getFormattedNumber(num);
+//   }	
+// }
+// function getFormattedNumber(num: string){
+//   if(num=="-"){
+//       return "";
+//   }
+//   var n = Number(num);
+//   var value = n.toLocaleString("en");
+//   return value;
+// }
+// function reverseNumberFormat(num: string){
+//   return Number(num.replace(/,/g,''));
+// }
+// var operator = document.getElementsByClassName("operator");
+// for(var i =0;i<operator.length;i++){
+//   operator[i].addEventListener('click',function(){
+//       if(this.id=="clear"){
+//           printHistory("");
+//           printOutput("");
+//       }
+//       else if(this.id=="backspace"){
+//           var output=reverseNumberFormat(getOutput()).toString();
+//           if(output){//if output has a value
+//               output= output.substr(0,output.length-1);
+//               printOutput(output);
+//           }
+//       }
+//       else{
+//           var output=getOutput();
+//           var history=getHistory();
+//           if(output==""&&history!=""){
+//               if(isNaN(history[history.length-1])){
+//                   history= history.substr(0,history.length-1);
+//               }
+//           }
+//           if(output!="" || history!=""){
+//               output= output==""?output:reverseNumberFormat(output);
+//               history=history+output;
+//               if(this.id=="="){
+//                   var result=eval(history);
+//                   printOutput(result);
+//                   printHistory("");
+//               }
+//               else{
+//                   history=history+this.id;
+//                   printHistory(history);
+//                   printOutput("");
+//               }
+//           }
+//       }
+      
+//   });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var number = document.getElementsByClassName("number");
+// for(var i =0;i<number.length;i++){
+//   number[i].addEventListener('click',function(){
+//       var output=reverseNumberFormat(getOutput());
+//       if(output!=NaN){ //if output is a number
+//           output=output+this.id; 
+//           printOutput(output);
+//       }
+//   });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // // // можно переназначить var
 // // var a = 10
 // // console.log(a)
@@ -24,16 +373,51 @@ console.log('Hello World!!!')
 // // let number1 = prompt("Введите первое число:")
 // // let number2 = prompt("Введите второе число:")
 
+
+
+
+
+
+
+
 // // let sum = parseFloat(number1) + parseFloat(number2)
 // // let raznost = parseFloat(number1) - parseFloat(number2)
 // // let del = parseFloat(number1) / parseFloat(number2)
 // // let ymnoj = parseFloat(number1) * parseFloat(number2)
 // // let stepen = parseFloat(number1) ** parseFloat(number2)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // // alert('Сумма чисел равна: ' + sum +'\nРазность чисел равна:' +raznost +'\nПри деление:'+ del +'\nПри умножении:'+ymnoj+'\nПервое число в степени второго числа: '+stepen)
 // alert("Задание 1 нажмите ок чтобы продолжить")
 // let name = prompt('Введите ваше имя: ')
 // alert('Привет, '+ name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // alert("Задание 2 нажмите ок чтобы продолжить")
 // const DATE = 2024
@@ -41,14 +425,54 @@ console.log('Hello World!!!')
 // alert('Сейчас вам: '+ (DATE - +date_of_born))
 
 
+
+
+
+
+
+
+
+
 // alert("Задание 3 нажмите ок чтобы продолжить")
 // let perimetr = prompt('Введите длину стороны квадрата') as string
 // alert('Периметр квадрата = '+ Number(perimetr)*4)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // alert("Задание 4 нажмите ок чтобы продолжить")
 // let radius = prompt('Введите радиус окружности') as string
 // alert(Math.PI * +radius * +radius )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // alert("Задание 5 нажмите ок чтобы продолжить")
@@ -57,11 +481,41 @@ console.log('Hello World!!!')
 // let speed = (+distance / +time)
 // alert('Чтобы успеть вовремя, необходимо двигаться со скоростью ' + speed + 'км/ч.')
 
+
+
+
+
+
+
+
+
+
+
+
 // alert("Задание 6 нажмите ок чтобы продолжить")
 // const exchangeRate = 0.93 // Курс обмена 1 доллар = 0,93 евро
 // let dollars = prompt("Введите сумму в долларах:")
 // let euros = dollars * exchangeRate
 // alert(dollars+' долларов равно примерно ' + euros + 'евро.')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // alert("Задание 7 нажмите ок чтобы продолжить")
 // let flashDriveSize = prompt("Укажите объем флешки в Гб:")
@@ -70,6 +524,29 @@ console.log('Hello World!!!')
 // let filesCount = Math.floor(flashDriveSizeMB / fileSizeMB)
 // alert('На флешку объемом '+flashDriveSize+' Гб поместится примерно '+filesCount+' файлов размером 820 Мб.');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // alert("Задание 8 нажмите ок чтобы продолжить")
 // let walletMoney = prompt("Введите сумму денег в вашем кошельке:")
 // let chocolatePrice = prompt("Введите цену одной шоколадки:")
@@ -77,8 +554,42 @@ console.log('Hello World!!!')
 // let change = walletMoney % chocolatePrice
 // alert('Вы можете купить ' + chocolatesCount + ' шоколадок и у вас останется ' + change + ' денег в кошельке.')
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // alert("Задание 10 нажмите ок чтобы продолжить")
 // let number2 = prompt("Введите целое число:");
 // let isEven = number2 % 2 === 0;
 // let result = isEven ? "Число четное." : "Число нечетное.";
 // alert(result);
+
+
+
+
+
+
+
+
+
