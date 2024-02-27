@@ -1,6 +1,134 @@
 import './style.css'
+
+
+
+// for (let i = 2; i <= 10; i++) {
+//   if (i % 2 === 0) {
+//       console.log(i)
+//   }
+// }
+
+
+// let i = 0;
+// while (i < 3) {
+//     alert(`number ${i}!`);
+//     i++;
+// }
+
+
+
+// let number: number | null = null
+
+
+// while (number === null || number <= 100) {
+//     let input = prompt("Введите число больше 100:", "") 
+//     if (input === null) {
+//         alert("Отменено")
+//         break;
+//     } else {
+//       number = +input
+//     }
+// }
+
+// if (number !== null && number > 100) {
+//     alert(`Вы ввели число больше 100: ${number}`)
+// }
+
+
+// let n = 10
+
+// nextPrime:
+// for (let i = 2; i <= n; i++) {
+
+//   for (let j = 2; j < i; j++) {
+//     if (i % j == 0) continue nextPrime
+//   }
+
+//   alert( i );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          //Проверка значения из диапозона
+// let age: number = 14;
+
+// if (age >= 14 && age <= 90) {
+//     console.log("Возраст находится в диапазоне от 14 до 90 включительно");
+// } else {
+//     console.log("Возраст находится вне диапазона от 14 до 90");
+// }
+
+
+
+//С использованием оператора НЕ  !
+// let age: number = 25;
+
+// if (!(age >= 14 && age <= 90)) {
+//     console.log("Возраст НЕ находится в диапазоне от 14 до 90 включительно");
+// } else {
+//     console.log("Возраст находится в диапазоне от 14 до 90");
+// }
+
+
+
+//Без использования оператора НЕ  ! 
+// let age: number = 25;
+
+// if (age < 14 || age > 90) {
+//     console.log("Возраст НЕ находится в диапазоне от 14 до 90 включительно");
+// } else {
+//     console.log("Возраст находится в диапазоне от 14 до 90");
+// }
+
+
+
+//Вопрос об if 
+// let login: string | null = prompt("Введите логин:", "")
+
+// if (login === "Админ") {
+//     let password: string | null = prompt("Введите пароль:", "")
+
+//     if (password === "Я главный") {
+//         alert("Здравствуйте!")
+//     } else if (password === null || password === "") {
+//         alert("Отменено")
+//     } else {
+//         alert("Неверный пароль")
+//     }
+// } else if (login === null || login === "") {
+//     alert("Отменено")
+// } else {
+//     alert("Я вас не знаю")
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                                       // пример использования switch
-// let day: number = 6
+// let day: number = 8
 // let dayName: string
 
 // switch (day) {
@@ -30,26 +158,60 @@ import './style.css'
 // }
 // console.log(`Сегодня ${dayName}`);
 
-
-
-
-
-
-
-
                                           // пример использования логических операторов
-// let isSunny: boolean = true
-// let temperature: number = 55
+// let isSunny: boolean = true;
+// let temperature: number = 65;
+// let isWeekend: boolean = false;
 
 // if (isSunny && temperature > 20) {
-//     console.log("Погода отличная для прогулки!")
-// } else if (isSunny && temperature <= 20) {
-//     console.log("Можно пойти на прогулку, но возьми кофту!")
-// } else if (!isSunny) {
-//     console.log("Сегодня пасмурно, лучше остаться дома.")
-// } else {
-//     console.log("Погода неопределенная, решайте сами.")
-// }
+//     console.log("Погода отличная для прогулки!");
+// } else if (isSunny && temperature <= 20) {  
+//     console.log("Можно пойти на прогулку, но возьми кофту!");
+// } else if (!isSunny || isWeekend) {  
+//     console.log("Сегодня пасмурно или выходной, лучше остаться дома.");
+// } else {  
+//     console.log("Погода неопределенная, решайте сами.");
+// }    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
