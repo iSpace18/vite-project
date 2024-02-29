@@ -122,11 +122,6 @@ import './style.css'
 
 
 
-
-
-
-
-
                                                                       // пример использования switch
 // let day: number = 8
 // let dayName: string
@@ -158,6 +153,9 @@ import './style.css'
 // }
 // console.log(`Сегодня ${dayName}`);
 
+
+
+
                                           // пример использования логических операторов
 // let isSunny: boolean = true;
 // let temperature: number = 65;
@@ -180,129 +178,83 @@ import './style.css'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 1. Вывести "#" столько раз, сколько указал пользователь:
+const count: number = 5
+let i: number = 0
+while (i < count) {
+    console.log("#")
+    i++
+}
+
+
+// 2. Вывести все числа от введенного пользователем до 0:
+// const num: number = 2
+// while (num >= 0) {
+//     console.log(num)
+//     num--
+// }
+
+// 3. Возвести число в указанную степень и вывести результат:
+// const num: number =4
+// const power: number = 1
+// let result: number = 1
+// let i: number = 0
+// while (i < power) {
+//     result *= num
+//     i++;
+// }
+// console.log(`Результат: ${result}`)
+
+
+// 4. Найти все общие делители двух чисел:
+// const num1: number =4;
+// const num2: number =2;
+// let i: number = 1
+// while (i <= num1 && i <= num2) {
+//     if (num1 % i === 0 && num2 % i === 0) {
+//         console.log(i)
+//     }
+//     i++
+// }
+
+
+
+
+// 5. Посчитать факториал введенного пользователем числа:
+// const num: number = 5
+// let factorial: number = 1
+// let i: number = 1
+// while (i <= num) {
+//     factorial *= i
+//     i++
+// }
+// console.log(`Факториал числа ${num} равен ${factorial}`)
+
+
+
+
+
+// ■ Задания, в которых необходимо использовать DO WHILE.
+
+// 1. Предлагать пользователю решить пример 2 + 2 * 2 до тех пор, пока он не решит его правильно:
+
+// let userAnswer: number
+// do {
+//     userAnswer = Number(prompt("Решите пример: 2 + 2 * 2 = "))
+// } while (userAnswer !== 6)
+// console.log("Верно!")
+
+
+// 2. Делить число 1000 на 2 до тех пор, пока не получится число меньше 50. Вывести это число и сколько делений произвели:
+
+// let number = 1000
+// let divisions = 0
+// do {
+//     number /= 2
+//     divisions++
+// } while (number >= 50)
+// console.log(`Полученное число: ${number}`)
+// console.log(`Количество делений: ${divisions}`)
 
 
 
@@ -329,202 +281,6 @@ import './style.css'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                               //скопированный код для калькулятора
-// function getHistory(){
-//   return document.getElementById("history-value").innerText;
-// }
-// function printHistory(num: string){
-//   document.getElementById("history-value").innerText=num;
-// }
-// function getOutput(){
-//   return document.getElementById("output-value").innerText;
-// }
-// function printOutput(num: string | number){
-//   if(num==""){
-//       document.getElementById("output-value").innerText=num;
-//   }
-//   else{
-//       document.getElementById("output-value").innerText=getFormattedNumber(num);
-//   }	
-// }
-// function getFormattedNumber(num: string){
-//   if(num=="-"){
-//       return "";
-//   }
-//   var n = Number(num);
-//   var value = n.toLocaleString("en");
-//   return value;
-// }
-// function reverseNumberFormat(num: string){
-//   return Number(num.replace(/,/g,''));
-// }
-// var operator = document.getElementsByClassName("operator");
-// for(var i =0;i<operator.length;i++){
-//   operator[i].addEventListener('click',function(){
-//       if(this.id=="clear"){
-//           printHistory("");
-//           printOutput("");
-//       }
-//       else if(this.id=="backspace"){
-//           var output=reverseNumberFormat(getOutput()).toString();
-//           if(output){//if output has a value
-//               output= output.substr(0,output.length-1);
-//               printOutput(output);
-//           }
-//       }
-//       else{
-//           var output=getOutput();
-//           var history=getHistory();
-//           if(output==""&&history!=""){
-//               if(isNaN(history[history.length-1])){
-//                   history= history.substr(0,history.length-1);
-//               }
-//           }
-//           if(output!="" || history!=""){
-//               output= output==""?output:reverseNumberFormat(output);
-//               history=history+output;
-//               if(this.id=="="){
-//                   var result=eval(history);
-//                   printOutput(result);
-//                   printHistory("");
-//               }
-//               else{
-//                   history=history+this.id;
-//                   printHistory(history);
-//                   printOutput("");
-//               }
-//           }
-//       }
-      
-//   });
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                                                //оператор if
 // var number = document.getElementsByClassName("number");
 // for(var i =0;i<number.length;i++){
@@ -536,17 +292,6 @@ import './style.css'
 //       }
 //   });
 // }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -604,13 +349,6 @@ import './style.css'
 
 
 
-
-
-
-
-
-
-
                 // alert("Задание 2 нажмите ок чтобы продолжить")
 // const DATE = 2024
 // let date_of_born = prompt('Введите свою дату рождения') as string
@@ -622,23 +360,9 @@ import './style.css'
 
 
 
-
-
-
                // alert("Задание 3 нажмите ок чтобы продолжить")
 // let perimetr = prompt('Введите длину стороны квадрата') as string
 // alert('Периметр квадрата = '+ Number(perimetr)*4)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -659,25 +383,11 @@ import './style.css'
 
 
 
-
-
-
-
-
-
-
-
                            // alert("Задание 5 нажмите ок чтобы продолжить")
 // let distance = prompt("Введите расстояние между городами в километрах:")
 // let time = prompt("Введите время, за которое вы хотите добраться (в часах):") as string
 // let speed = (+distance / +time)
 // alert('Чтобы успеть вовремя, необходимо двигаться со скоростью ' + speed + 'км/ч.')
-
-
-
-
-
-
 
 
 
@@ -702,30 +412,12 @@ import './style.css'
 
 
 
-
-
-
-
-
-
-
                         // alert("Задание 7 нажмите ок чтобы продолжить")
 // let flashDriveSize = prompt("Укажите объем флешки в Гб:")
 // const fileSizeMB = 820
 // let flashDriveSizeMB = flashDriveSize * 1024
 // let filesCount = Math.floor(flashDriveSizeMB / fileSizeMB)
 // alert('На флешку объемом '+flashDriveSize+' Гб поместится примерно '+filesCount+' файлов размером 820 Мб.');
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -759,29 +451,8 @@ import './style.css'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                            // alert("Задание 10 нажмите ок чтобы продолжить")
 // let number2 = prompt("Введите целое число:");
 // let isEven = number2 % 2 === 0;
 // let result = isEven ? "Число четное." : "Число нечетное.";
 // alert(result);
-
-
-
-
-
-
-
-
-
