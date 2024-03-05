@@ -54,15 +54,6 @@ import './style.css'
 
 
 
-
-
-
-
-
-
-
-
-
           //Проверка значения из диапозона
 // let age: number = 14;
 
@@ -172,19 +163,35 @@ import './style.css'
 // }    
 
 
+// function ymnoj(a,b){
+//     return a*b
+// }
+// let result= ymnoj(5,4)
+// console.log(result)
 
+// let add = function(a:number, b:number) {
+//     return a + b
+// }
 
+// let sum = add(5, 3)
+// console.log(sum)
 
+let square = (x:number) => {
+    return x * x
+}
+
+let result = square(3)
+console.log(result)
 
 
 
 // 1. Вывести "#" столько раз, сколько указал пользователь:
-const count: number = 5
-let i: number = 0
-while (i < count) {
-    console.log("#")
-    i++
-}
+// const count: number = 5
+// let i: number = 0
+// while (i < count) {
+//     console.log("#")
+//     i++
+// }
 
 
 // 2. Вывести все числа от введенного пользователем до 0:
