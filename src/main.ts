@@ -1,5 +1,87 @@
 import './style.css'
 
+// // 1. Функция, возвращающая меньшее из двух чисел
+// let num1 = 4;
+// let num2 = 5;
+
+// function findSmallerNumber(num1:number, num2:number) {
+//     return Math.min(num1, num2);
+// }
+// console.log(findSmallerNumber(num1, num2));
+
+// // 2. Функция, возводящая число в указанную степень
+// let base = 2;
+// let exponent = 3;
+// function calculatePower(base:number, exponent:number) {
+//     return Math.pow(base, exponent);
+// }
+// console.log(calculatePower(base, exponent));
+
+// 3. Функция, выполняющая арифметические операции над двумя числами
+
+let num1 = 10;
+let num2 = 5;
+let operator = '*';
+function calculateExpression(num1:number, num2:number, operator:string) {
+    switch(operator) {
+        case '+':
+            return num1 + num2;
+        case '-':
+            return num1 - num2;
+        case '*':
+            return num1 * num2;
+        case '/':
+            return num1 / num2;
+        default:
+            return 0;
+    }
+}
+
+console.log(calculateExpression(num1, num2, operator));
+
+// // 4. Функция, проверяющая является ли число простым
+// function isPrimeNumber(num: number): boolean {
+//     if (num <= 1) return false
+//     for (let i = 2; i <= Math.sqrt(num); i++) {
+//         if (num % i === 0) return false
+//     }
+//     return true
+// }
+
+// // 5. Функция, выводящая таблицу умножения для числа
+// function multiplicationTable(num: number): void {
+//     for (let i = 1; i <= 10; i++) {
+//         console.log(`${num} * ${i} = ${num * i}`)
+//     }
+// }
+
+// // 6. Функция, реализующая оператор %
+// function moduloOperator(num1: number, num2: number): number {
+//     return num1 - Math.floor(num1 / num2) * num2
+// }
+
+// // 7. Функция, возвращающая сумму переданных чисел
+// function calculateSum(...nums: number[]): number {
+//     return nums.reduce((acc, curr) => acc + curr, 0)
+// }
+
+// // 8. Функция, возвращающая наибольшее из переданных чисел
+// function findLargestNumber(...nums: number[]): number {
+//     return Math.max(...nums)
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // for (let i = 2; i <= 10; i++) {

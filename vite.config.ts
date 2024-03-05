@@ -1,3 +1,5 @@
+import {resolve} from 'path'
+
 export default{
   base:'/vite-project/',
   build: {
