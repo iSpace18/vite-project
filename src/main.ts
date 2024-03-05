@@ -19,25 +19,25 @@ import './style.css'
 
 // 3. Функция, выполняющая арифметические операции над двумя числами
 
-let num1 = 10;
-let num2 = 5;
-let operator = '*';
-function calculateExpression(num1:number, num2:number, operator:string) {
-    switch(operator) {
-        case '+':
-            return num1 + num2;
-        case '-':
-            return num1 - num2;
-        case '*':
-            return num1 * num2;
-        case '/':
-            return num1 / num2;
-        default:
-            return 0;
-    }
-}
+// let num1 = 10;
+// let num2 = 5;
+// let operator = '*';
+// function calculateExpression(num1:number, num2:number, operator:string) {
+//     switch(operator) {
+//         case '+':
+//             return num1 + num2;
+//         case '-':
+//             return num1 - num2;
+//         case '*':
+//             return num1 * num2;
+//         case '/':
+//             return num1 / num2;
+//         default:
+//             return 0;
+//     }
+// }
 
-console.log(calculateExpression(num1, num2, operator));
+// console.log(calculateExpression(num1, num2, operator));
 
 // // 4. Функция, проверяющая является ли число простым
 // function isPrimeNumber(num: number): boolean {
