@@ -237,17 +237,16 @@ function factorize(n: number, divisor: number = 2): void {
     }
     if (n % divisor === 0) {
         console.log(divisor)
-        factorize(n / divisor, divisor)
+        factorize(n / divisor, divisor )
     } else {
         factorize(n, divisor + 1)
     }
 }
 
 factorize(18)
+
+
 //6
-
-
-
 function fibonacci(n: number): number {
     if (n <= 1) {
         return n
