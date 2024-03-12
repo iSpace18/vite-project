@@ -112,166 +112,228 @@
 
 
 
+// //1
+// function factorial(n: number): number {
+//     if (n === 0) {
+//         return 1
+//     } else {
+//         return n * factorial(n - 1)
+//     }
+// }
+
+// console.log(factorial(3))
+
+// //2
+// function printNumbersForward(start: number, end: number): void {
+//     if (start <= end) {
+//         console.log(start)
+//         printNumbersForward(start + 1, end)
+//     }
+// }
+
+// function printNumbersBackward(start: number, end: number): void {
+//     if (start <= end) {
+//         printNumbersBackward(start + 1, end)
+//         console.log(start)
+//     }
+// }
+
+// printNumbersForward(1, 5)
+// printNumbersBackward(1, 5)
+
+// //3
+// function reverseNumber(n: number): number {
+//     if (n < 10) {
+//         return n
+//     } else {
+//         return +(String(n % 10) + String(reverseNumber(Math.floor(n / 10))))
+//     }
+// }
+
+// console.log(reverseNumber(1234))
+
+// //4
+// function sumOfDigits(n: number): number {
+//     if (n < 10) {
+//         return n
+//     } else {
+//         return n % 10 + sumOfDigits(Math.floor(n / 10))
+//     }
+// }
+
+// console.log(sumOfDigits(1357))
+
+// //5
+// function generateParenthesesPairs(n: number): string {
+//     if (n === 0) {
+//         return ''
+//     } else {
+//         return '(' + generateParenthesesPairs(n - 1) + ')'
+//     }
+// }
+
+// console.log(generateParenthesesPairs(4))
+
+
+
+// //1
+// function power(base: number, exponent: number): number {
+//     if (exponent === 0) {
+//         return 1
+//     } else {
+//         return base * power(base, exponent - 1)
+//     }
+// }
+
+// console.log(power(2, 3))
+
+
+// //2
+
+// function gcd(a: number, b: number): number {
+//     if (b === 0) {
+//         return a
+//     } else {
+//         return gcd(b, a % b)
+//     }
+// }
+
+// console.log(gcd(24, 36))
+// //3
+
+// function maxDigit(n: number): number {
+//     if (n < 10) {
+//         return n
+//     } else {
+//         const remainder = n % 10
+//         const restMax = maxDigit(Math.floor(n / 10));
+//         return remainder > restMax ? remainder : restMax
+//     }
+// }
+
+// console.log(maxDigit(5839))
+
+// //4
+// function isPrime(n: number, divisor: number = 2): boolean {
+//     if (n < 2) {
+//         return false
+//     } else if (n === 2) {
+//         return true;
+//     } else if (n % divisor === 0) {
+//         return false
+//     } else if (divisor * divisor > n) {
+//         return true
+//     } else {
+//         return isPrime(n, divisor + 1)
+//     }
+// }
+
+// console.log(isPrime(17))
+
+// //5
+// function factorize(n: number, divisor: number = 2): void {
+//     if (n === 1) {
+//         return
+//     }
+//     if (n % divisor === 0) {
+//         console.log(divisor)
+//         factorize(n / divisor, divisor )
+//     } else {
+//         factorize(n, divisor + 1)
+//     }
+// }
+
+// factorize(18)
+
+
+// //6
+// function fibonacci(n: number): number {
+//     if (n <= 1) {
+//         return n
+//     } else {
+//         return fibonacci(n - 1) + fibonacci(n - 2)
+//     }
+// }
+
+// console.log(fibonacci(6))
+
+
+
+
+
 //1
-function factorial(n: number): number {
-    if (n === 0) {
-        return 1
-    } else {
-        return n * factorial(n - 1)
-    }
-}
-
-console.log(factorial(3))
-
+// const user = {
+//     name:"John",
+//     surname:"Smith"
+// };
+// user.name = "John";
+// user.surname = "Smith";
+// user.name = "Pete";
+// delete user.name;
 //2
-function printNumbersForward(start: number, end: number): void {
-    if (start <= end) {
-        console.log(start)
-        printNumbersForward(start + 1, end)
-    }
-}
-
-function printNumbersBackward(start: number, end: number): void {
-    if (start <= end) {
-        printNumbersBackward(start + 1, end)
-        console.log(start)
-    }
-}
-
-printNumbersForward(1, 5)
-printNumbersBackward(1, 5)
+// function isEmpty(obj) {
+//     for (let key in obj) {
+//         return false;
+//     }
+//     return true;
+//   }
 
 //3
-function reverseNumber(n: number): number {
-    if (n < 10) {
-        return n
-    } else {
-        return +(String(n % 10) + String(reverseNumber(Math.floor(n / 10))))
-    }
-}
-
-console.log(reverseNumber(1234))
-
-//4
-function sumOfDigits(n: number): number {
-    if (n < 10) {
-        return n
-    } else {
-        return n % 10 + sumOfDigits(Math.floor(n / 10))
-    }
-}
-
-console.log(sumOfDigits(1357))
-
-//5
-function generateParenthesesPairs(n: number): string {
-    if (n === 0) {
-        return ''
-    } else {
-        return '(' + generateParenthesesPairs(n - 1) + ')'
-    }
-}
-
-console.log(generateParenthesesPairs(4))
+// let salaries = {
+//     John: 100,
+//     Ann: 160,
+//     Pete: 130
+//   };
+  
+//   let sum = 0;
+//   for (let key in salaries) {
+//     sum += salaries[key];
+//   }
+  
+//   alert(sum)
 
 
 
-//1
-function power(base: number, exponent: number): number {
-    if (exponent === 0) {
-        return 1
-    } else {
-        return base * power(base, exponent - 1)
-    }
-}
 
-console.log(power(2, 3))
+// type Fraction = {
+//     numerator: number;
+//     denominator: number;
+// };
 
+// function findCommonDenominator(fraction1: Fraction, fraction2: Fraction): number {
+//     const lcm = (fraction1.denominator * fraction2.denominator) / findGCD(fraction1.denominator, fraction2.denominator);
+//     return lcm;
+// }
 
-//2
+// function findGCD(a: number, b: number): number {
+//     if (b === 0) {
+//         return a;
+//     } else {
+//         return findGCD(b, a % b);
+//     }
+// }
 
-function gcd(a: number, b: number): number {
+// const fraction1: Fraction = { numerator: 1, denominator: 3 };
+// const fraction2: Fraction = { numerator: 2, denominator: 5 };
+
+// const commonDenominator = findCommonDenominator(fraction1, fraction2);
+// console.log(
+//     `Общий знаменатель для дробей ${fraction1.numerator}/${fraction1.denominator} и ${fraction2.numerator}/${fraction2.denominator} = ${commonDenominator}`);
+
+//HOД
+function findGCD(a: number, b: number): number {
     if (b === 0) {
-        return a
+        return a;
     } else {
-        return gcd(b, a % b)
+        return findGCD(b, a % b);
     }
 }
 
-console.log(gcd(24, 36))
-//3
-
-function maxDigit(n: number): number {
-    if (n < 10) {
-        return n
-    } else {
-        const remainder = n % 10
-        const restMax = maxDigit(Math.floor(n / 10));
-        return remainder > restMax ? remainder : restMax
-    }
-}
-
-console.log(maxDigit(5839))
-
-//4
-function isPrime(n: number, divisor: number = 2): boolean {
-    if (n < 2) {
-        return false
-    } else if (n === 2) {
-        return true;
-    } else if (n % divisor === 0) {
-        return false
-    } else if (divisor * divisor > n) {
-        return true
-    } else {
-        return isPrime(n, divisor + 1)
-    }
-}
-
-console.log(isPrime(17))
-
-//5
-function factorize(n: number, divisor: number = 2): void {
-    if (n === 1) {
-        return
-    }
-    if (n % divisor === 0) {
-        console.log(divisor)
-        factorize(n / divisor, divisor )
-    } else {
-        factorize(n, divisor + 1)
-    }
-}
-
-factorize(18)
-
-
-//6
-function fibonacci(n: number): number {
-    if (n <= 1) {
-        return n
-    } else {
-        return fibonacci(n - 1) + fibonacci(n - 2)
-    }
-}
-
-console.log(fibonacci(6))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const num1 = 24;
+const num2 = 36;
+const gcd = findGCD(num1, num2);
+console.log(
+    `Наибольший общий делитель чисел ${num1} и ${num2} равен ${gcd}`);
 
 
 
