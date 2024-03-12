@@ -1,4 +1,257 @@
 // import './style.css'
+//dz 2.1
+
+//1
+
+interface Car {
+    manufacturer: string;
+    model: string;
+    year: number;
+    averageSpeed: number;
+    getInfo(): void;
+    calculateTime(distance: number): void;
+}
+
+let car: Car = {
+    manufacturer: "BMW",
+    model: "X5",
+    year: 2024,
+    averageSpeed: 500,
+    getInfo() {
+        console.log(`Car: ${this.manufacturer} ${this.model}, year ${this.year}, average speed ${this.averageSpeed} km/h`);
+    },
+    calculateTime(distance) {
+        let time = distance / this.averageSpeed;
+        let breaks = Math.floor(time / 4);
+        time += breaks;
+        console.log(`To cover a distance of ${distance} km, it will take ${time} hours, considering breaks`);
+    }
+};
+
+car.getInfo();
+car.calculateTime(400);
+
+//2
+
+interface Fraction {
+    numerator: number;
+    denominator: number;
+}
+
+function addFraction(fraction1: Fraction, fraction2: Fraction): Fraction {
+    let numerator = fraction1.numerator * fraction2.denominator + fraction2.numerator * fraction1.denominator;
+    let denominator = fraction1.denominator * fraction2.denominator;
+    return { numerator, denominator };
+}
+
+function subtractFraction(fraction1: Fraction, fraction2: Fraction): Fraction {
+    let numerator = fraction1.numerator * fraction2.denominator - fraction2.numerator * fraction1.denominator;
+    let denominator = fraction1.denominator * fraction2.denominator;
+    return { numerator, denominator };
+}
+
+function multiplyFraction(fraction1: Fraction, fraction2: Fraction): Fraction {
+    let numerator = fraction1.numerator * fraction2.numerator;
+    let denominator = fraction1.denominator * fraction2.denominator;
+    return { numerator, denominator };
+}
+
+function divideFraction(fraction1: Fraction, fraction2: Fraction): Fraction {
+    let numerator = fraction1.numerator * fraction2.denominator;
+    let denominator = fraction1.denominator * fraction2.numerator;
+    return { numerator, denominator };
+}
+
+let fraction1: Fraction = { numerator: 1, denominator: 2 };
+let fraction2: Fraction = { numerator: 1, denominator: 3 };
+
+let sum = addFraction(fraction1, fraction2);
+let difference = subtractFraction(fraction1, fraction2);
+let product = multiplyFraction(fraction1, fraction2);
+let quotient = divideFraction(fraction1, fraction2);
+
+console.log("Sum of fractions:", sum);
+console.log("Difference of fractions:", difference);
+console.log("Product of fractions:", product);
+console.log("Quotient of fractions:", quotient);
+
+//3
+
+interface Time {
+    hours: number;
+    minutes: number;
+    seconds: number;
+    displayTime(): void;
+    changeSeconds(seconds: number): void;
+    changeMinutes(minutes: number): void;
+    changeHours(hours: number): void;
+}
+
+let time: Time = {
+    hours: 20,
+    minutes: 30,
+    seconds: 45,
+    displayTime() {
+        console.log(`${this.hours}:${this.minutes}:${this.seconds}`);
+    },
+    changeSeconds(seconds) {
+        this.seconds += seconds;
+        if (this.seconds >= 60) {
+            let extraMinutes = Math.floor(this.seconds / 60);
+            this.seconds %= 60;
+            this.changeMinutes(extraMinutes);
+        }
+    },
+    changeMinutes(minutes) {
+        this.minutes += minutes;
+        if (this.minutes >= 60) {
+            let extraHours = Math.floor(this.minutes / 60);
+            this.minutes %= 60;
+            this.changeHours(extraHours);
+        }
+    },
+    changeHours(hours) {
+        this.hours = (this.hours + hours) % 24;
+    }
+};
+
+time.displayTime();
+time.changeSeconds(30);
+time.displayTime();
+time.changeMinutes(45);
+time.displayTime();
+time.changeHours(5);
+time.displayTime();
+
+
+
+
+
+//pz 2.1
+
+//1
+interface Rectangle {
+    topLeft: { x: number, y: number };
+    bottomRight: { x: number, y: number };
+}
+
+function getRectangleInfo(rect: Rectangle): void {
+    console.log(`Top Left: (${rect.topLeft.x}, ${rect.topLeft.y})`);
+    console.log(`Bottom Right: (${rect.bottomRight.x}, ${rect.bottomRight.y})`);
+}
+
+function getWidth(rect: Rectangle): number {
+    return Math.abs(rect.bottomRight.x - rect.topLeft.x);
+}
+
+function getHeight(rect: Rectangle): number {
+    return Math.abs(rect.bottomRight.y - rect.topLeft.y);
+}
+
+function getArea(rect: Rectangle): number {
+    return getWidth(rect) * getHeight(rect);
+}
+
+function getPerimeter(rect: Rectangle): number {
+    return 2 * (getWidth(rect) + getHeight(rect));
+}
+
+function changeWidth(rect: Rectangle, change: number): void {
+    rect.bottomRight.x += change;
+}
+
+function changeHeight(rect: Rectangle, change: number): void {
+    rect.bottomRight.y += change;
+}
+
+function changeWidthAndHeight(rect: Rectangle, widthChange: number, heightChange: number): void {
+    changeWidth(rect, widthChange);
+    changeHeight(rect, heightChange);
+}
+
+function moveX(rect: Rectangle, shiftX: number): void {
+    rect.topLeft.x += shiftX;
+    rect.bottomRight.x += shiftX;
+}
+
+function moveY(rect: Rectangle, shiftY: number): void {
+    rect.topLeft.y += shiftY;
+    rect.bottomRight.y += shiftY;
+}
+
+function moveXY(rect: Rectangle, shiftX: number, shiftY: number): void {
+    moveX(rect, shiftX);
+    moveY(rect, shiftY);
+}
+
+function isPointInside(rect: Rectangle, point: { x: number, y: number }): boolean {
+    return point.x >= rect.topLeft.x && point.x <= rect.bottomRight.x && point.y >= rect.topLeft.y && point.y <= rect.bottomRight.y;
+}
+
+// Example Usage
+let rectangle: Rectangle = {
+    topLeft: { x: 0, y: 0 },
+    bottomRight: { x: 5, y: 5 }
+};
+
+getRectangleInfo(rectangle);
+console.log("Width:", getWidth(rectangle));
+console.log("Height:", getHeight(rectangle));
+console.log("Area:", getArea(rectangle));
+console.log("Perimeter:", getPerimeter(rectangle));
+
+changeWidth(rectangle, 3);
+console.log("New Width:", getWidth(rectangle));
+
+changeHeight(rectangle, 2);
+console.log("New Height:", getHeight(rectangle));
+
+changeWidthAndHeight(rectangle, 2, 1);
+console.log("New Width:", getWidth(rectangle));
+console.log("New Height:", getHeight(rectangle));
+
+moveXY(rectangle, 1, -1);
+getRectangleInfo(rectangle);
+
+console.log("Is point (3, 3) inside the rectangle?", isPointInside(rectangle, { x: 3, y: 3 }));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //   1. Функция, возвращающая меньшее из двух чисел
 //  let num1 = 4;
