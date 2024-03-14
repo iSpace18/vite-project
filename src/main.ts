@@ -134,87 +134,66 @@ interface Rectangle {
     topLeft: { x: number, y: number };
     bottomRight: { x: number, y: number };
 }
-
 function getRectangleInfo(rect: Rectangle): void {
-    console.log(`Top Left: (${rect.topLeft.x}, ${rect.topLeft.y})`);
-    console.log(`Bottom Right: (${rect.bottomRight.x}, ${rect.bottomRight.y})`);
+    console.log(`Верхний левый угол: (${rect.topLeft.x}, ${rect.topLeft.y})`);
+    console.log(`Нижний правый угол: (${rect.bottomRight.x}, ${rect.bottomRight.y})`);
 }
-
 function getWidth(rect: Rectangle): number {
     return Math.abs(rect.bottomRight.x - rect.topLeft.x);
 }
-
 function getHeight(rect: Rectangle): number {
     return Math.abs(rect.bottomRight.y - rect.topLeft.y);
 }
-
 function getArea(rect: Rectangle): number {
     return getWidth(rect) * getHeight(rect);
 }
-
 function getPerimeter(rect: Rectangle): number {
     return 2 * (getWidth(rect) + getHeight(rect));
 }
-
 function changeWidth(rect: Rectangle, change: number): void {
     rect.bottomRight.x += change;
 }
-
 function changeHeight(rect: Rectangle, change: number): void {
     rect.bottomRight.y += change;
 }
-
 function changeWidthAndHeight(rect: Rectangle, widthChange: number, heightChange: number): void {
     changeWidth(rect, widthChange);
     changeHeight(rect, heightChange);
 }
-
 function moveX(rect: Rectangle, shiftX: number): void {
     rect.topLeft.x += shiftX;
     rect.bottomRight.x += shiftX;
 }
-
 function moveY(rect: Rectangle, shiftY: number): void {
     rect.topLeft.y += shiftY;
     rect.bottomRight.y += shiftY;
 }
-
 function moveXY(rect: Rectangle, shiftX: number, shiftY: number): void {
     moveX(rect, shiftX);
     moveY(rect, shiftY);
 }
-
 function isPointInside(rect: Rectangle, point: { x: number, y: number }): boolean {
     return point.x >= rect.topLeft.x && point.x <= rect.bottomRight.x && point.y >= rect.topLeft.y && point.y <= rect.bottomRight.y;
 }
-
-// Example Usage
 let rectangle: Rectangle = {
     topLeft: { x: 0, y: 0 },
     bottomRight: { x: 5, y: 5 }
 };
-
 getRectangleInfo(rectangle);
-console.log("Width:", getWidth(rectangle));
-console.log("Height:", getHeight(rectangle));
-console.log("Area:", getArea(rectangle));
-console.log("Perimeter:", getPerimeter(rectangle));
-
+console.log("Ширина:", getWidth(rectangle));
+console.log("Высота:", getHeight(rectangle));
+console.log("Площадь:", getArea(rectangle));
+console.log("Периметр:", getPerimeter(rectangle));
 changeWidth(rectangle, 3);
-console.log("New Width:", getWidth(rectangle));
-
+console.log("Новая ширина:", getWidth(rectangle));
 changeHeight(rectangle, 2);
-console.log("New Height:", getHeight(rectangle));
-
+console.log("Новая высота:", getHeight(rectangle));
 changeWidthAndHeight(rectangle, 2, 1);
-console.log("New Width:", getWidth(rectangle));
-console.log("New Height:", getHeight(rectangle));
-
+console.log("Новая ширина:", getWidth(rectangle));
+console.log("Новая высота:", getHeight(rectangle));
 moveXY(rectangle, 1, -1);
 getRectangleInfo(rectangle);
-
-console.log("Is point (3, 3) inside the rectangle?", isPointInside(rectangle, { x: 3, y: 3 }));
-
+console.log("Точка (3, 3) находится внутри прямоугольника?", isPointInside(rectangle, { x: 3, y: 3 }));
 
 
 
