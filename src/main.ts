@@ -30,7 +30,6 @@ let car: Car = {
 
 car.getInfo();
 car.calculateTime(400);
-
 //2
 
 interface Fraction {
