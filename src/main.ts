@@ -4,28 +4,32 @@
 //1
 
 interface Car {
-    manufacturer: string;
-    model: string;
-    year: number;
-    averageSpeed: number;
-    getInfo(): void;
-    calculateTime(distance: number): void;
+  manufacturer: string;
+  model: string;
+  year: number;
+  averageSpeed: number;
+  getInfo(): void;
+  calculateTime(distance: number): void;
 }
 
 let car: Car = {
-    manufacturer: "BMW",
-    model: "X5",
-    year: 2024,
-    averageSpeed: 500,
-    getInfo() {
-        console.log(`Car: ${this.manufacturer} ${this.model}, year ${this.year}, average speed ${this.averageSpeed} km/h`);
-    },
-    calculateTime(distance) {
-        let time = distance / this.averageSpeed;
-        let breaks = Math.floor(time / 4);
-        time += breaks;
-        console.log(`To cover a distance of ${distance} km, it will take ${time} hours, considering breaks`);
-    }
+  manufacturer: "BMW",
+  model: "X5",
+  year: 2024,
+  averageSpeed: 500,
+  getInfo() {
+    console.log(
+      `Car: ${this.manufacturer} ${this.model}, year ${this.year}, average speed ${this.averageSpeed} km/h`
+    );
+  },
+  calculateTime(distance) {
+    let time = distance / this.averageSpeed;
+    let breaks = Math.floor(time / 4);
+    time += breaks;
+    console.log(
+      `To cover a distance of ${distance} km, it will take ${time} hours, considering breaks`
+    );
+  },
 };
 
 car.getInfo();
@@ -33,32 +37,36 @@ car.calculateTime(400);
 //2
 
 interface Fraction {
-    numerator: number;
-    denominator: number;
+  numerator: number;
+  denominator: number;
 }
 
 function addFraction(fraction1: Fraction, fraction2: Fraction): Fraction {
-    let numerator = fraction1.numerator * fraction2.denominator + fraction2.numerator * fraction1.denominator;
-    let denominator = fraction1.denominator * fraction2.denominator;
-    return { numerator, denominator };
+  let numerator =
+    fraction1.numerator * fraction2.denominator +
+    fraction2.numerator * fraction1.denominator;
+  let denominator = fraction1.denominator * fraction2.denominator;
+  return { numerator, denominator };
 }
 
 function subtractFraction(fraction1: Fraction, fraction2: Fraction): Fraction {
-    let numerator = fraction1.numerator * fraction2.denominator - fraction2.numerator * fraction1.denominator;
-    let denominator = fraction1.denominator * fraction2.denominator;
-    return { numerator, denominator };
+  let numerator =
+    fraction1.numerator * fraction2.denominator -
+    fraction2.numerator * fraction1.denominator;
+  let denominator = fraction1.denominator * fraction2.denominator;
+  return { numerator, denominator };
 }
 
 function multiplyFraction(fraction1: Fraction, fraction2: Fraction): Fraction {
-    let numerator = fraction1.numerator * fraction2.numerator;
-    let denominator = fraction1.denominator * fraction2.denominator;
-    return { numerator, denominator };
+  let numerator = fraction1.numerator * fraction2.numerator;
+  let denominator = fraction1.denominator * fraction2.denominator;
+  return { numerator, denominator };
 }
 
 function divideFraction(fraction1: Fraction, fraction2: Fraction): Fraction {
-    let numerator = fraction1.numerator * fraction2.denominator;
-    let denominator = fraction1.denominator * fraction2.numerator;
-    return { numerator, denominator };
+  let numerator = fraction1.numerator * fraction2.denominator;
+  let denominator = fraction1.denominator * fraction2.numerator;
+  return { numerator, denominator };
 }
 
 let fraction1: Fraction = { numerator: 1, denominator: 2 };
@@ -77,41 +85,41 @@ console.log("Quotient of fractions:", quotient);
 //3
 
 interface Time {
-    hours: number;
-    minutes: number;
-    seconds: number;
-    displayTime(): void;
-    changeSeconds(seconds: number): void;
-    changeMinutes(minutes: number): void;
-    changeHours(hours: number): void;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  displayTime(): void;
+  changeSeconds(seconds: number): void;
+  changeMinutes(minutes: number): void;
+  changeHours(hours: number): void;
 }
 
 let time: Time = {
-    hours: 20,
-    minutes: 30,
-    seconds: 45,
-    displayTime() {
-        console.log(`${this.hours}:${this.minutes}:${this.seconds}`);
-    },
-    changeSeconds(seconds) {
-        this.seconds += seconds;
-        if (this.seconds >= 60) {
-            let extraMinutes = Math.floor(this.seconds / 60);
-            this.seconds %= 60;
-            this.changeMinutes(extraMinutes);
-        }
-    },
-    changeMinutes(minutes) {
-        this.minutes += minutes;
-        if (this.minutes >= 60) {
-            let extraHours = Math.floor(this.minutes / 60);
-            this.minutes %= 60;
-            this.changeHours(extraHours);
-        }
-    },
-    changeHours(hours) {
-        this.hours = (this.hours + hours) % 24;
+  hours: 20,
+  minutes: 30,
+  seconds: 45,
+  displayTime() {
+    console.log(`${this.hours}:${this.minutes}:${this.seconds}`);
+  },
+  changeSeconds(seconds) {
+    this.seconds += seconds;
+    if (this.seconds >= 60) {
+      let extraMinutes = Math.floor(this.seconds / 60);
+      this.seconds %= 60;
+      this.changeMinutes(extraMinutes);
     }
+  },
+  changeMinutes(minutes) {
+    this.minutes += minutes;
+    if (this.minutes >= 60) {
+      let extraHours = Math.floor(this.minutes / 60);
+      this.minutes %= 60;
+      this.changeHours(extraHours);
+    }
+  },
+  changeHours(hours) {
+    this.hours = (this.hours + hours) % 24;
+  },
 };
 
 time.displayTime();
@@ -122,13 +130,90 @@ time.displayTime();
 time.changeHours(5);
 time.displayTime();
 
-
-
-
-
 //pz 2.1
 
 //1
+// interface Rectangle {
+//   topLeft: { x: number; y: number };
+//   bottomRight: { x: number; y: number };
+// }
+// function getRectangleInfo(rect: Rectangle): void {
+//   console.log(`Верхний левый угол: (${rect.topLeft.x}, ${rect.topLeft.y})`);
+//   console.log(
+//     `Нижний правый угол: (${rect.bottomRight.x}, ${rect.bottomRight.y})`
+//   );
+// }
+// function getWidth(rect: Rectangle): number {
+//   return Math.abs(rect.bottomRight.x - rect.topLeft.x);
+// }
+// function getHeight(rect: Rectangle): number {
+//   return Math.abs(rect.bottomRight.y - rect.topLeft.y);
+// }
+// function getArea(rect: Rectangle): number {
+//   return getWidth(rect) * getHeight(rect);
+// }
+// function getPerimeter(rect: Rectangle): number {
+//   return 2 * (getWidth(rect) + getHeight(rect));
+// }
+// function changeWidth(rect: Rectangle, change: number): void {
+//   rect.bottomRight.x += change;
+// }
+// function changeHeight(rect: Rectangle, change: number): void {
+//   rect.bottomRight.y += change;
+// }
+// function changeWidthAndHeight(
+//   rect: Rectangle,
+//   widthChange: number,
+//   heightChange: number
+// ): void {
+//   changeWidth(rect, widthChange);
+//   changeHeight(rect, heightChange);
+// }
+// function moveX(rect: Rectangle, shiftX: number): void {
+//   rect.topLeft.x += shiftX;
+//   rect.bottomRight.x += shiftX;
+// }
+// function moveY(rect: Rectangle, shiftY: number): void {
+//   rect.topLeft.y += shiftY;
+//   rect.bottomRight.y += shiftY;
+// }
+// function moveXY(rect: Rectangle, shiftX: number, shiftY: number): void {
+//   moveX(rect, shiftX);
+//   moveY(rect, shiftY);
+// }
+// function isPointInside(
+//   rect: Rectangle,
+//   point: { x: number; y: number }
+// ): boolean {
+//   return (
+//     point.x >= rect.topLeft.x &&
+//     point.x <= rect.bottomRight.x &&
+//     point.y >= rect.topLeft.y &&
+//     point.y <= rect.bottomRight.y
+//   );
+// }
+// let rectangle: Rectangle = {
+//   topLeft: { x: 0, y: 0 },
+//   bottomRight: { x: 5, y: 5 },
+// };
+// getRectangleInfo(rectangle);
+// console.log("Ширина:", getWidth(rectangle));
+// console.log("Высота:", getHeight(rectangle));
+// console.log("Площадь:", getArea(rectangle));
+// console.log("Периметр:", getPerimeter(rectangle));
+// changeWidth(rectangle, 3);
+// console.log("Новая ширина:", getWidth(rectangle));
+// changeHeight(rectangle, 2);
+// console.log("Новая высота:", getHeight(rectangle));
+// changeWidthAndHeight(rectangle, 2, 1);
+// console.log("Новая ширина:", getWidth(rectangle));
+// console.log("Новая высота:", getHeight(rectangle));
+// moveXY(rectangle, 1, -1);
+// getRectangleInfo(rectangle);
+// console.log(
+//   "Точка (3, 3) находится внутри прямоугольника?",
+//   isPointInside(rectangle, { x: 3, y: 3 })
+// );
 interface Rectangle {
     topLeft: { x: number, y: number };
     bottomRight: { x: number, y: number };
@@ -177,40 +262,108 @@ function isPointInside(rect: Rectangle, point: { x: number, y: number }): boolea
 let rectangle: Rectangle = {
     topLeft: { x: 0, y: 0 },
     bottomRight: { x: 5, y: 5 }
-};
+}
 getRectangleInfo(rectangle);
-console.log("Ширина:", getWidth(rectangle));
-console.log("Высота:", getHeight(rectangle));
-console.log("Площадь:", getArea(rectangle));
-console.log("Периметр:", getPerimeter(rectangle));
-changeWidth(rectangle, 3);
-console.log("Новая ширина:", getWidth(rectangle));
-changeHeight(rectangle, 2);
-console.log("Новая высота:", getHeight(rectangle));
-changeWidthAndHeight(rectangle, 2, 1);
-console.log("Новая ширина:", getWidth(rectangle));
-console.log("Новая высота:", getHeight(rectangle));
-moveXY(rectangle, 1, -1);
-getRectangleInfo(rectangle);
-console.log("Точка (3, 3) находится внутри прямоугольника?", isPointInside(rectangle, { x: 3, y: 3 }));
+// console.log("Ширина:", getWidth(rectangle));
+// console.log("Высота:", getHeight(rectangle));
+// console.log("Площадь:", getArea(rectangle));
+// console.log("Периметр:", getPerimeter(rectangle));
+// changeWidth(rectangle, 3);
+// console.log("Новая ширина:", getWidth(rectangle));
+// changeHeight(rectangle, 2);
+// console.log("Новая высота:", getHeight(rectangle));
+// changeWidthAndHeight(rectangle, 2, 1);
+// console.log("Новая ширина:", getWidth(rectangle));
+// console.log("Новая высота:", getHeight(rectangle));
+// moveXY(rectangle, 1, -1);
+// getRectangleInfo(rectangle);
+// console.log("Точка (3, 3) находится внутри прямоугольника?", isPointInside(rectangle, { x: 3, y: 3 }));
+
+const rectElement = document.getElementById('rect') as HTMLDivElement
+function initRect(rect: Rectangle, rectEl: HTMLDivElement) {
+  rectEl.style.width = getWidth(rect)*10+'px'
+  rectEl.style.height = getHeight(rect)*10+'px'
+  rectEl.style.top = rect.topLeft.y+'px'
+  rectEl.style.left = rect.topLeft.x+'px'
+}
+initRect(rectangle, rectElement)
+
+const topLeftButton = document.getElementById('topLeft') as HTMLDivElement
+const topButton = document.getElementById('top') as HTMLDivElement
+const topRightButton = document.getElementById('topRight') as HTMLDivElement
+const leftButton = document.getElementById('left') as HTMLDivElement
+const rightButton = document.getElementById('right') as HTMLDivElement
+const bottomLeftButton = document.getElementById('bottomLeft') as HTMLDivElement
+const bottomButton = document.getElementById('bottom') as HTMLDivElement
+const bottomRightButton = document.getElementById('bottomRight') as HTMLDivElement
+
+const addHeightButton = document.getElementById('addHeight') as HTMLDivElement
+const addWidthButton = document.getElementById('addWidth') as HTMLDivElement
+const reduceHeightButton = document.getElementById('reduceHeight') as HTMLDivElement
+const reduceWidthButton = document.getElementById('reduceWidth') as HTMLDivElement
+
+addHeightButton.addEventListener('click', ()=>{
+  changeHeight(rectangle, 1)
+  initRect(rectangle, rectElement)
+})
+reduceHeightButton.addEventListener('click', ()=>{
+  changeHeight(rectangle, -1)
+  initRect(rectangle, rectElement)
+})
+addWidthButton.addEventListener('click', ()=>{
+  changeWidth(rectangle, 1)
+  initRect(rectangle, rectElement)
+})
+reduceWidthButton.addEventListener('click', ()=>{
+  changeWidth(rectangle, -1)
+  initRect(rectangle, rectElement)
+})
+
+topLeftButton.addEventListener('click', ()=>{
+  moveXY(rectangle, -10, -10)
+  initRect(rectangle, rectElement)
+})
+topButton.addEventListener('click', ()=>{
+  moveY(rectangle, -10)
+  initRect(rectangle, rectElement)
+})
+topRightButton.addEventListener('click', ()=>{
+  moveXY(rectangle, 10, -10)
+  initRect(rectangle, rectElement)
+})
+leftButton.addEventListener('click', ()=>{
+  moveX(rectangle, -10)
+  initRect(rectangle, rectElement)
+})
+rightButton.addEventListener('click', ()=>{
+  moveX(rectangle, 10)
+  initRect(rectangle, rectElement)
+})
+bottomLeftButton.addEventListener('click', () => {
+  moveXY(rectangle, -10, 10)
+  initRect(rectangle, rectElement)
+})
+bottomButton.addEventListener('click', () => {
+  moveY(rectangle, 10)
+  initRect(rectangle, rectElement)
+})
+bottomRightButton.addEventListener('click', () => {
+  moveXY(rectangle, 10, 10)
+  initRect(rectangle, rectElement)
+})
 
 
+let numbers: number[] = [1, 2, 3, 4, 5];
 
 
+function multiplyByTwo(num: number): number {
+    return num * 2;
+}
 
 
+let doubledNumbers: number[] = numbers.map(multiplyByTwo);
 
-
-
-
-
-
-
-
-
-
-
-
+console.log(doubledNumbers);
 
 
 
@@ -301,9 +454,9 @@ console.log("Точка (3, 3) находится внутри прямоуго�
 // const result2 = sumNumbers(2, 4, 6);
 // const result3 = sumNumbers(1, 2, 3, 4, 5);
 
-// console.log(result1); 
-// console.log(result2); 
-// console.log(result3); 
+// console.log(result1);
+// console.log(result2);
+// console.log(result3);
 
 //   8. Функция, возвращающая наибольшее из переданных чисел
 //  function findLargestNumber(...nums: number[]): number {
@@ -324,7 +477,6 @@ console.log("Точка (3, 3) находится внутри прямоуго�
 // console.log("Нечетные числа в диапазоне 1-10:")
 // printNumbersInRange(1, 10, false)
 
-
 //10
 // function isLeapYear(year: number): boolean {
 //     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
@@ -336,12 +488,8 @@ console.log("Точка (3, 3) находится внутри прямоуго�
 //     return `${nextDate.getDate() < 10 ? '0' : ''}${nextDate.getDate()}.${(nextDate.getMonth() + 1) < 10 ? '0' : ''}${nextDate.getMonth() + 1}.${nextDate.getFullYear()}`
 // }
 
-
 // const currentDate = new Date(2024, 0, 31);
 // console.log(`Следующий день после ${currentDate.toLocaleDateString()}: ${getNextDay(currentDate)}`)
-
-
-
 
 // //1
 // function factorial(n: number): number {
@@ -405,8 +553,6 @@ console.log("Точка (3, 3) находится внутри прямоуго�
 
 // console.log(generateParenthesesPairs(4))
 
-
-
 // //1
 // function power(base: number, exponent: number): number {
 //     if (exponent === 0) {
@@ -417,7 +563,6 @@ console.log("Точка (3, 3) находится внутри прямоуго�
 // }
 
 // console.log(power(2, 3))
-
 
 // //2
 
@@ -476,7 +621,6 @@ console.log("Точка (3, 3) находится внутри прямоуго�
 
 // factorize(18)
 
-
 // //6
 // function fibonacci(n: number): number {
 //     if (n <= 1) {
@@ -487,10 +631,6 @@ console.log("Точка (3, 3) находится внутри прямоуго�
 // }
 
 // console.log(fibonacci(6))
-
-
-
-
 
 //1
 // const user = {
@@ -515,16 +655,13 @@ console.log("Точка (3, 3) находится внутри прямоуго�
 //     Ann: 160,
 //     Pete: 130
 //   };
-  
+
 //   let sum = 0;
 //   for (let key in salaries) {
 //     sum += salaries[key];
 //   }
-  
+
 //   alert(sum)
-
-
-
 
 // type Fraction = {
 //     numerator: number;
@@ -553,29 +690,17 @@ console.log("Точка (3, 3) находится внутри прямоуго�
 
 //HOД
 function findGCD(a: number, b: number): number {
-    if (b === 0) {
-        return a;
-    } else {
-        return findGCD(b, a % b);
-    }
+  if (b === 0) {
+    return a;
+  } else {
+    return findGCD(b, a % b);
+  }
 }
 
 const num1 = 24;
 const num2 = 36;
 const gcd = findGCD(num1, num2);
-console.log(
-    `Наибольший общий делитель чисел ${num1} и ${num2} равен ${gcd}`);
-
-
-
-
-
-
-
-
-
-
-
+console.log(`Наибольший общий делитель чисел ${num1} и ${num2} равен ${gcd}`);
 
 // function generateRandomPassword(length: number): string {
 //     const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*'
@@ -591,24 +716,11 @@ console.log(
 // const randomPassword = generateRandomPassword(passwordLength)
 // console.log(`Cгенерированный пароль: ${randomPassword}`)
 
-
-
-
-
-
-
-
-
-
-
-
-
 //  for (let i = 2; i <= 10; i++) {
 //    if (i % 2 === 0) {
 //        console.log(i)
 //    }
 //  }
-
 
 //  let i = 0;
 //  while (i < 3) {
@@ -616,13 +728,10 @@ console.log(
 //      i++;
 //  }
 
-
-
 //  let number: number | null = null
 
-
 //  while (number === null || number <= 100) {
-//      let input = prompt("Введите число больше 100:", "") 
+//      let input = prompt("Введите число больше 100:", "")
 //      if (input === null) {
 //          alert("Отменено")
 //          break;
@@ -634,7 +743,6 @@ console.log(
 //  if (number !== null && number > 100) {
 //      alert(`Вы ввели число больше 100: ${number}`)
 //  }
-
 
 //  let n = 10
 
@@ -648,13 +756,6 @@ console.log(
 //    alert( i );
 //  }
 
-
-
-
-
-
-
-
 //           Проверка значения из диапозона
 //  let age: number = 14;
 
@@ -663,8 +764,6 @@ console.log(
 //  } else {
 //      console.log("Возраст находится вне диапазона от 14 до 90");
 //  }
-
-
 
 // С использованием оператора НЕ  !
 //  let age: number = 25;
@@ -675,9 +774,7 @@ console.log(
 //      console.log("Возраст находится в диапазоне от 14 до 90");
 //  }
 
-
-
-// Без использования оператора НЕ  ! 
+// Без использования оператора НЕ  !
 //  let age: number = 25;
 
 //  if (age < 14 || age > 90) {
@@ -686,9 +783,7 @@ console.log(
 //      console.log("Возраст находится в диапазоне от 14 до 90");
 //  }
 
-
-
-// Вопрос об if 
+// Вопрос об if
 //  let login: string | null = prompt("Введите логин:", "")
 
 //  if (login === "Админ") {
@@ -706,13 +801,6 @@ console.log(
 //  } else {
 //      alert("Я вас не знаю")
 //  }
-
-
-
-
-
-
-
 
 //                                                                        пример использования switch
 //  let day: number = 8
@@ -745,9 +833,6 @@ console.log(
 //  }
 //  console.log(`Сегодня ${dayName}`);
 
-
-
-
 //                                            пример использования логических операторов
 //  let isSunny: boolean = true;
 //  let temperature: number = 65;
@@ -755,14 +840,13 @@ console.log(
 
 //  if (isSunny && temperature > 20) {
 //      console.log("Погода отличная для прогулки!");
-//  } else if (isSunny && temperature <= 20) {  
+//  } else if (isSunny && temperature <= 20) {
 //      console.log("Можно пойти на прогулку, но возьми кофту!");
-//  } else if (!isSunny || isWeekend) {  
+//  } else if (!isSunny || isWeekend) {
 //      console.log("Сегодня пасмурно или выходной, лучше остаться дома.");
-//  } else {  
+//  } else {
 //      console.log("Погода неопределенная, решайте сами.");
-//  }    
-
+//  }
 
 //  function ymnoj(a,b){
 //      return a*b
@@ -784,8 +868,6 @@ console.log(
 // let result = square(3)
 // console.log(result)
 
-
-
 //  1. Вывести "#" столько раз, сколько указал пользователь:
 //  const count: number = 5
 //  let i: number = 0
@@ -793,7 +875,6 @@ console.log(
 //      console.log("#")
 //      i++
 //  }
-
 
 //  2. Вывести все числа от введенного пользователем до 0:
 //  const num: number = 2
@@ -813,7 +894,6 @@ console.log(
 //  }
 //  console.log(`Результат: ${result}`)
 
-
 //  4. Найти все общие делители двух чисел:
 //  const num1: number =4;
 //  const num2: number =2;
@@ -825,9 +905,6 @@ console.log(
 //      i++
 //  }
 
-
-
-
 //  5. Посчитать факториал введенного пользователем числа:
 //  const num: number = 5
 //  let factorial: number = 1
@@ -838,10 +915,6 @@ console.log(
 //  }
 //  console.log(`Факториал числа ${num} равен ${factorial}`)
 
-
-
-
-
 //  ■ Задания, в которых необходимо использовать DO WHILE.
 
 //  1. Предлагать пользователю решить пример 2 + 2 * 2 до тех пор, пока он не решит его правильно:
@@ -851,7 +924,6 @@ console.log(
 //      userAnswer = Number(prompt("Решите пример: 2 + 2 * 2 = "))
 //  } while (userAnswer !== 6)
 //  console.log("Верно!")
-
 
 //  2. Делить число 1000 на 2 до тех пор, пока не получится число меньше 50. Вывести это число и сколько делений произвели:
 
@@ -864,16 +936,6 @@ console.log(
 //  console.log(`Полученное число: ${number}`)
 //  console.log(`Количество делений: ${divisions}`)
 
-
-
-
-
-
-
-
-
-
-
 //                                                                вводный
 //  let nemo = ('makaka')
 //  let p = ('Obezyana')
@@ -884,30 +946,17 @@ console.log(
 //  let num3 = 1
 //  console.log(num2 / num3)
 
-
-
-
-
-
 //                                                                оператор if
 //  var number = document.getElementsByClassName("number");
 //  for(var i =0;i<number.length;i++){
 //    number[i].addEventListener('click',function(){
 //        var output=reverseNumberFormat(getOutput());
 //        if(output!=NaN){ if output is a number
-//            output=output+this.id; 
+//            output=output+this.id;
 //            printOutput(output);
 //        }
 //    });
 //  }
-
-
-
-
-
-
-
-
 
 //                                                               можно переназначить var
 //  var a = 10
@@ -915,7 +964,7 @@ console.log(
 //  var a = 20
 //  console.log(a)
 //   не меняется
-//  let newVar = 5 
+//  let newVar = 5
 //  console.log(newVar)
 //   не заданное значение noVal
 //  let noVal
@@ -924,7 +973,7 @@ console.log(
 //  const DAY_IN_WEEK = 7
 //   DAY_IN_WEEK = 8
 //   нельзя использовать цифры в название переменной
-//   let 23 
+//   let 23
 //  console.log('1+1=',1+1)
 //  console.log('10+1=',10+1)
 //  console.log('5-1=',5-1)
@@ -933,13 +982,7 @@ console.log(
 //  let number1 = prompt("Введите первое число:")
 //  let number2 = prompt("Введите второе число:")
 
-
-
-
-
-
-
-//                                                                                     калькулятор 
+//                                                                                     калькулятор
 //   let sum = parseFloat(number1) + parseFloat(number2)
 //   let raznost = parseFloat(number1) - parseFloat(number2)
 //   let del = parseFloat(number1) / parseFloat(number2)
@@ -950,46 +993,18 @@ console.log(
 //  let name = prompt('Введите ваше имя: ')
 //  alert('Привет, '+ name)
 
-
-
-
-
-
-
-
 //                  alert("Задание 2 нажмите ок чтобы продолжить")
 //  const DATE = 2024
 //  let date_of_born = prompt('Введите свою дату рождения') as string
 //  alert('Сейчас вам: '+ (DATE - +date_of_born))
 
-
-
-
-
-
-
 //                 alert("Задание 3 нажмите ок чтобы продолжить")
 //  let perimetr = prompt('Введите длину стороны квадрата') as string
 //  alert('Периметр квадрата = '+ Number(perimetr)*4)
 
-
-
-
-
-
-
-
-
 //                  alert("Задание 4 нажмите ок чтобы продолжить")
 //  let radius = prompt('Введите радиус окружности') as string
 //  alert(Math.PI * +radius * +radius )
-
-
-
-
-
-
-
 
 //                             alert("Задание 5 нажмите ок чтобы продолжить")
 //  let distance = prompt("Введите расстояние между городами в километрах:")
@@ -997,28 +1012,11 @@ console.log(
 //  let speed = (+distance / +time)
 //  alert('Чтобы успеть вовремя, необходимо двигаться со скоростью ' + speed + 'км/ч.')
 
-
-
-
-
-
 //                            alert("Задание 6 нажмите ок чтобы продолжить")
 //  const exchangeRate = 0.93  Курс обмена 1 доллар = 0,93 евро
 //  let dollars = prompt("Введите сумму в долларах:")
 //  let euros = dollars * exchangeRate
 //  alert(dollars+' долларов равно примерно ' + euros + 'евро.')
-
-
-
-
-
-
-
-
-
-
-
-
 
 //                          alert("Задание 7 нажмите ок чтобы продолжить")
 //  let flashDriveSize = prompt("Укажите объем флешки в Гб:")
@@ -1027,37 +1025,12 @@ console.log(
 //  let filesCount = Math.floor(flashDriveSizeMB / fileSizeMB)
 //  alert('На флешку объемом '+flashDriveSize+' Гб поместится примерно '+filesCount+' файлов размером 820 Мб.');
 
-
-
-
-
-
-
-
-
-
-
-
-
 //                      alert("Задание 8 нажмите ок чтобы продолжить")
 //  let walletMoney = prompt("Введите сумму денег в вашем кошельке:")
 //  let chocolatePrice = prompt("Введите цену одной шоколадки:")
 //  let chocolatesCount = Math.floor(walletMoney / chocolatePrice)
 //  let change = walletMoney % chocolatePrice
 //  alert('Вы можете купить ' + chocolatesCount + ' шоколадок и у вас останется ' + change + ' денег в кошельке.')
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //                             alert("Задание 10 нажмите ок чтобы продолжить")
 //  let number2 = prompt("Введите целое число:");
