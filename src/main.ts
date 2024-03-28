@@ -367,6 +367,13 @@ console.log(doubledNumbers);
 
 
 
+class Auditorium {
+  constructor(public name: string, public seats: number, public faculty: string) {}
+}
+
+class Group {
+  constructor(public name: string, public numberOfStudents: number, public faculty: string) {}
+}
 
 
 
@@ -374,9 +381,137 @@ console.log(doubledNumbers);
 
 
 
+const styles: { name: string; value: string }[] = [
+  { name: 'color', value: 'red' },
+  { name: 'font-size', value: '20px' },
+  { name: 'text-align', value: 'center' },
+  { name: 'text-decoration', value: 'underline' }
+];
+
+function applyStylesAndWrite(text: string, styles: { name: string; value: string }[]): void {
+  const styledTextElement = document.createElement('p');
+  styledTextElement.textContent = text;
+  document.body.appendChild(styledTextElement);
+
+  styles.forEach(style => {
+      styledTextElement.style[style.name as any] = style.value;
+  });
+}
+
+applyStylesAndWrite('Hello World', styles);
+
+
+class ReceiptItem {
+  constructor(public name: string, public quantity: number, public price: number) {}
+}
+
+const receipt: ReceiptItem[] = [];
+
+(window as any).addReceiptItem = function() {
+  const nameInput = document.getElementById("name") as HTMLInputElement;
+  const quantityInput = document.getElementById("quantity") as HTMLInputElement;
+  const priceInput = document.getElementById("price") as HTMLInputElement;
+
+  const name = nameInput.value;
+  const quantity = parseInt(quantityInput.value);
+  const price = parseInt(priceInput.value);
+
+  receipt.push(new ReceiptItem(name, quantity, price));
+  nameInput.value = "";
+  quantityInput.value = "";
+  priceInput.value = "";
+
+  updateReceipt();
+}
+function updateReceipt(): void {
+  const receiptElement = document.getElementById("receipt");
+  if (receiptElement) {
+      receiptElement.innerHTML = "<h2>Чек покупок:</h2>";
+      receipt.forEach(item => {
+          receiptElement.innerHTML += `<p>${item.name} - ${item.quantity} шт. по ${item.price} руб.</p>`;
+      });
+  }
+
+  const totalElement = document.getElementById("total");
+  if (totalElement) {
+      totalElement.textContent = `Общая сумма покупки: ${calculateTotal()} руб.`;
+  }
+
+  const mostExpensiveElement = document.getElementById("most-expensive");
+  if (mostExpensiveElement) {
+      mostExpensiveElement.textContent = getMostExpensiveItem();
+  }
+
+  const averagePriceElement = document.getElementById("average-price");
+  if (averagePriceElement) {
+      averagePriceElement.textContent = `Средняя стоимость товара в чеке: ${calculateAveragePrice()} руб.`;
+  }
+}
+
+function calculateTotal(): number {
+  let total = 0;
+  receipt.forEach(item => {
+      total += item.quantity * item.price;
+  });
+  return total;
+}
+
+function getMostExpensiveItem(): string {
+  const mostExpensiveItem = receipt.reduce((prev, current) => (prev.price > current.price) ? prev : current);
+  return `Самая дорогая покупка: ${mostExpensiveItem.name} - ${mostExpensiveItem.price} руб.`;
+}
+
+function calculateAveragePrice(): number {
+  const totalQuantity = receipt.reduce((total, item) => total + item.quantity, 0);
+  const totalPrice = receipt.reduce((total, item) => total + item.quantity * item.price, 0);
+  return totalPrice / totalQuantity;
+}
 
 
 
+
+
+
+interface ShoppingItem {
+  name: string;
+  quantity: number;
+  purchased: boolean;
+}
+
+const shoppingList: ShoppingItem[] = [];
+
+function displayShoppingList(): void {
+  const shoppingListElement = document.getElementById("shopping-list");
+  if (shoppingListElement) {
+      shoppingListElement.innerHTML = "<h2>Список покупок:</h2>";
+      shoppingList.forEach((item, index) => {
+          const status = item.purchased ? "Куплено" : "Не куплено";
+          shoppingListElement.innerHTML += `
+              <p>${item.name} - ${item.quantity} шт. (${status})
+                  <button onclick="togglePurchase(${index})">${item.purchased ? "Отменить покупку" : "Купить"}</button>
+              </p>`;
+      });
+  }
+}
+
+function addItemToShoppingList(name: string, quantity: number): void {
+  const existingItem = shoppingList.find(item => item.name === name);
+  if (existingItem) {
+      existingItem.quantity += quantity;
+  } else {
+      shoppingList.push({ name, quantity, purchased: false });
+  }
+  displayShoppingList();
+}
+
+function togglePurchase(index: number): void {
+  shoppingList[index].purchased = !shoppingList[index].purchased;
+  displayShoppingList();
+}
+
+// Пример использования функций
+addItemToShoppingList("Яблоки", 3);
+addItemToShoppingList("Молоко", 2);
 
 
 
