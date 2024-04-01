@@ -253,6 +253,45 @@ console.log("Is point (3, 3) inside the rectangle?", isPointInside(rectangle, { 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   1. Функция, возвращающая меньшее из двух чисел
 //  let num1 = 4;
 //  let num2 = 5;
