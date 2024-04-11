@@ -215,54 +215,68 @@ time.displayTime();
 //   isPointInside(rectangle, { x: 3, y: 3 })
 // );
 interface Rectangle {
-    topLeft: { x: number, y: number };
-    bottomRight: { x: number, y: number };
+  topLeft: { x: number; y: number };
+  bottomRight: { x: number; y: number };
 }
 function getRectangleInfo(rect: Rectangle): void {
-    console.log(`Верхний левый угол: (${rect.topLeft.x}, ${rect.topLeft.y})`);
-    console.log(`Нижний правый угол: (${rect.bottomRight.x}, ${rect.bottomRight.y})`);
+  console.log(`Верхний левый угол: (${rect.topLeft.x}, ${rect.topLeft.y})`);
+  console.log(
+    `Нижний правый угол: (${rect.bottomRight.x}, ${rect.bottomRight.y})`
+  );
 }
 function getWidth(rect: Rectangle): number {
-    return Math.abs(rect.bottomRight.x - rect.topLeft.x);
+  return Math.abs(rect.bottomRight.x - rect.topLeft.x);
 }
 function getHeight(rect: Rectangle): number {
-    return Math.abs(rect.bottomRight.y - rect.topLeft.y);
+  return Math.abs(rect.bottomRight.y - rect.topLeft.y);
 }
 function getArea(rect: Rectangle): number {
-    return getWidth(rect) * getHeight(rect);
+  return getWidth(rect) * getHeight(rect);
 }
 function getPerimeter(rect: Rectangle): number {
-    return 2 * (getWidth(rect) + getHeight(rect));
+  return 2 * (getWidth(rect) + getHeight(rect));
 }
 function changeWidth(rect: Rectangle, change: number): void {
-    rect.bottomRight.x += change;
+  rect.bottomRight.x += change;
 }
 function changeHeight(rect: Rectangle, change: number): void {
-    rect.bottomRight.y += change;
+  rect.bottomRight.y += change;
 }
-function changeWidthAndHeight(rect: Rectangle, widthChange: number, heightChange: number): void {
-    changeWidth(rect, widthChange);
-    changeHeight(rect, heightChange);
+function changeWidthAndHeight(
+  rect: Rectangle,
+  widthChange: number,
+  heightChange: number
+): void {
+  changeWidth(rect, widthChange);
+  changeHeight(rect, heightChange);
 }
 function moveX(rect: Rectangle, shiftX: number): void {
-    rect.topLeft.x += shiftX;
-    rect.bottomRight.x += shiftX;
+  rect.topLeft.x += shiftX;
+  rect.bottomRight.x += shiftX;
 }
 function moveY(rect: Rectangle, shiftY: number): void {
-    rect.topLeft.y += shiftY;
-    rect.bottomRight.y += shiftY;
+  rect.topLeft.y += shiftY;
+  rect.bottomRight.y += shiftY;
 }
 function moveXY(rect: Rectangle, shiftX: number, shiftY: number): void {
-    moveX(rect, shiftX);
-    moveY(rect, shiftY);
+  moveX(rect, shiftX);
+  moveY(rect, shiftY);
 }
-function isPointInside(rect: Rectangle, point: { x: number, y: number }): boolean {
-    return point.x >= rect.topLeft.x && point.x <= rect.bottomRight.x && point.y >= rect.topLeft.y && point.y <= rect.bottomRight.y;
+function isPointInside(
+  rect: Rectangle,
+  point: { x: number; y: number }
+): boolean {
+  return (
+    point.x >= rect.topLeft.x &&
+    point.x <= rect.bottomRight.x &&
+    point.y >= rect.topLeft.y &&
+    point.y <= rect.bottomRight.y
+  );
 }
 let rectangle: Rectangle = {
-    topLeft: { x: 0, y: 0 },
-    bottomRight: { x: 5, y: 5 }
-}
+  topLeft: { x: 0, y: 0 },
+  bottomRight: { x: 5, y: 5 },
+};
 getRectangleInfo(rectangle);
 // console.log("Ширина:", getWidth(rectangle));
 // console.log("Высота:", getHeight(rectangle));
@@ -279,135 +293,146 @@ getRectangleInfo(rectangle);
 // getRectangleInfo(rectangle);
 // console.log("Точка (3, 3) находится внутри прямоугольника?", isPointInside(rectangle, { x: 3, y: 3 }));
 
-const rectElement = document.getElementById('rect') as HTMLDivElement
+const rectElement = document.getElementById("rect") as HTMLDivElement;
 function initRect(rect: Rectangle, rectEl: HTMLDivElement) {
-  rectEl.style.width = getWidth(rect)*10+'px'
-  rectEl.style.height = getHeight(rect)*10+'px'
-  rectEl.style.top = rect.topLeft.y+'px'
-  rectEl.style.left = rect.topLeft.x+'px'
+  rectEl.style.width = getWidth(rect) * 10 + "px";
+  rectEl.style.height = getHeight(rect) * 10 + "px";
+  rectEl.style.top = rect.topLeft.y + "px";
+  rectEl.style.left = rect.topLeft.x + "px";
 }
-initRect(rectangle, rectElement)
+initRect(rectangle, rectElement);
 
-const topLeftButton = document.getElementById('topLeft') as HTMLDivElement
-const topButton = document.getElementById('top') as HTMLDivElement
-const topRightButton = document.getElementById('topRight') as HTMLDivElement
-const leftButton = document.getElementById('left') as HTMLDivElement
-const rightButton = document.getElementById('right') as HTMLDivElement
-const bottomLeftButton = document.getElementById('bottomLeft') as HTMLDivElement
-const bottomButton = document.getElementById('bottom') as HTMLDivElement
-const bottomRightButton = document.getElementById('bottomRight') as HTMLDivElement
+const topLeftButton = document.getElementById("topLeft") as HTMLDivElement;
+const topButton = document.getElementById("top") as HTMLDivElement;
+const topRightButton = document.getElementById("topRight") as HTMLDivElement;
+const leftButton = document.getElementById("left") as HTMLDivElement;
+const rightButton = document.getElementById("right") as HTMLDivElement;
+const bottomLeftButton = document.getElementById(
+  "bottomLeft"
+) as HTMLDivElement;
+const bottomButton = document.getElementById("bottom") as HTMLDivElement;
+const bottomRightButton = document.getElementById(
+  "bottomRight"
+) as HTMLDivElement;
 
-const addHeightButton = document.getElementById('addHeight') as HTMLDivElement
-const addWidthButton = document.getElementById('addWidth') as HTMLDivElement
-const reduceHeightButton = document.getElementById('reduceHeight') as HTMLDivElement
-const reduceWidthButton = document.getElementById('reduceWidth') as HTMLDivElement
+const addHeightButton = document.getElementById("addHeight") as HTMLDivElement;
+const addWidthButton = document.getElementById("addWidth") as HTMLDivElement;
+const reduceHeightButton = document.getElementById(
+  "reduceHeight"
+) as HTMLDivElement;
+const reduceWidthButton = document.getElementById(
+  "reduceWidth"
+) as HTMLDivElement;
 
-addHeightButton.addEventListener('click', ()=>{
-  changeHeight(rectangle, 1)
-  initRect(rectangle, rectElement)
-})
-reduceHeightButton.addEventListener('click', ()=>{
-  changeHeight(rectangle, -1)
-  initRect(rectangle, rectElement)
-})
-addWidthButton.addEventListener('click', ()=>{
-  changeWidth(rectangle, 1)
-  initRect(rectangle, rectElement)
-})
-reduceWidthButton.addEventListener('click', ()=>{
-  changeWidth(rectangle, -1)
-  initRect(rectangle, rectElement)
-})
+addHeightButton.addEventListener("click", () => {
+  changeHeight(rectangle, 1);
+  initRect(rectangle, rectElement);
+});
+reduceHeightButton.addEventListener("click", () => {
+  changeHeight(rectangle, -1);
+  initRect(rectangle, rectElement);
+});
+addWidthButton.addEventListener("click", () => {
+  changeWidth(rectangle, 1);
+  initRect(rectangle, rectElement);
+});
+reduceWidthButton.addEventListener("click", () => {
+  changeWidth(rectangle, -1);
+  initRect(rectangle, rectElement);
+});
 
-topLeftButton.addEventListener('click', ()=>{
-  moveXY(rectangle, -10, -10)
-  initRect(rectangle, rectElement)
-})
-topButton.addEventListener('click', ()=>{
-  moveY(rectangle, -10)
-  initRect(rectangle, rectElement)
-})
-topRightButton.addEventListener('click', ()=>{
-  moveXY(rectangle, 10, -10)
-  initRect(rectangle, rectElement)
-})
-leftButton.addEventListener('click', ()=>{
-  moveX(rectangle, -10)
-  initRect(rectangle, rectElement)
-})
-rightButton.addEventListener('click', ()=>{
-  moveX(rectangle, 10)
-  initRect(rectangle, rectElement)
-})
-bottomLeftButton.addEventListener('click', () => {
-  moveXY(rectangle, -10, 10)
-  initRect(rectangle, rectElement)
-})
-bottomButton.addEventListener('click', () => {
-  moveY(rectangle, 10)
-  initRect(rectangle, rectElement)
-})
-bottomRightButton.addEventListener('click', () => {
-  moveXY(rectangle, 10, 10)
-  initRect(rectangle, rectElement)
-})
-
+topLeftButton.addEventListener("click", () => {
+  moveXY(rectangle, -10, -10);
+  initRect(rectangle, rectElement);
+});
+topButton.addEventListener("click", () => {
+  moveY(rectangle, -10);
+  initRect(rectangle, rectElement);
+});
+topRightButton.addEventListener("click", () => {
+  moveXY(rectangle, 10, -10);
+  initRect(rectangle, rectElement);
+});
+leftButton.addEventListener("click", () => {
+  moveX(rectangle, -10);
+  initRect(rectangle, rectElement);
+});
+rightButton.addEventListener("click", () => {
+  moveX(rectangle, 10);
+  initRect(rectangle, rectElement);
+});
+bottomLeftButton.addEventListener("click", () => {
+  moveXY(rectangle, -10, 10);
+  initRect(rectangle, rectElement);
+});
+bottomButton.addEventListener("click", () => {
+  moveY(rectangle, 10);
+  initRect(rectangle, rectElement);
+});
+bottomRightButton.addEventListener("click", () => {
+  moveXY(rectangle, 10, 10);
+  initRect(rectangle, rectElement);
+});
 
 let numbers: number[] = [1, 2, 3, 4, 5];
 
-
 function multiplyByTwo(num: number): number {
-    return num * 2;
+  return num * 2;
 }
-
 
 let doubledNumbers: number[] = numbers.map(multiplyByTwo);
 
 console.log(doubledNumbers);
 
-
-
 class Auditorium {
-  constructor(public name: string, public seats: number, public faculty: string) {}
+  constructor(
+    public name: string,
+    public seats: number,
+    public faculty: string
+  ) {}
 }
 
 class Group {
-  constructor(public name: string, public numberOfStudents: number, public faculty: string) {}
+  constructor(
+    public name: string,
+    public numberOfStudents: number,
+    public faculty: string
+  ) {}
 }
 
-
-
-
-
-
-
 const styles: { name: string; value: string }[] = [
-  { name: 'color', value: 'red' },
-  { name: 'font-size', value: '20px' },
-  { name: 'text-align', value: 'center' },
-  { name: 'text-decoration', value: 'underline' }
+  { name: "color", value: "red" },
+  { name: "font-size", value: "20px" },
+  { name: "text-align", value: "center" },
+  { name: "text-decoration", value: "underline" },
 ];
 
-function applyStylesAndWrite(text: string, styles: { name: string; value: string }[]): void {
-  const styledTextElement = document.createElement('p');
+function applyStylesAndWrite(
+  text: string,
+  styles: { name: string; value: string }[]
+): void {
+  const styledTextElement = document.createElement("p");
   styledTextElement.textContent = text;
   document.body.appendChild(styledTextElement);
 
-  styles.forEach(style => {
-      styledTextElement.style[style.name as any] = style.value;
+  styles.forEach((style) => {
+    styledTextElement.style[style.name as any] = style.value;
   });
 }
 
-applyStylesAndWrite('Hello World', styles);
-
+applyStylesAndWrite("Hello World", styles);
 
 class ReceiptItem {
-  constructor(public name: string, public quantity: number, public price: number) {}
+  constructor(
+    public name: string,
+    public quantity: number,
+    public price: number
+  ) {}
 }
 
 const receipt: ReceiptItem[] = [];
 
-(window as any).addReceiptItem = function() {
+(window as any).addReceiptItem = function () {
   const nameInput = document.getElementById("name") as HTMLInputElement;
   const quantityInput = document.getElementById("quantity") as HTMLInputElement;
   const priceInput = document.getElementById("price") as HTMLInputElement;
@@ -422,55 +447,58 @@ const receipt: ReceiptItem[] = [];
   priceInput.value = "";
 
   updateReceipt();
-}
+};
 function updateReceipt(): void {
   const receiptElement = document.getElementById("receipt");
   if (receiptElement) {
-      receiptElement.innerHTML = "<h2>Чек покупок:</h2>";
-      receipt.forEach(item => {
-          receiptElement.innerHTML += `<p>${item.name} - ${item.quantity} шт. по ${item.price} руб.</p>`;
-      });
+    receiptElement.innerHTML = "<h2>Чек покупок:</h2>";
+    receipt.forEach((item) => {
+      receiptElement.innerHTML += `<p>${item.name} - ${item.quantity} шт. по ${item.price} руб.</p>`;
+    });
   }
 
   const totalElement = document.getElementById("total");
   if (totalElement) {
-      totalElement.textContent = `Общая сумма покупки: ${calculateTotal()} руб.`;
+    totalElement.textContent = `Общая сумма покупки: ${calculateTotal()} руб.`;
   }
 
   const mostExpensiveElement = document.getElementById("most-expensive");
   if (mostExpensiveElement) {
-      mostExpensiveElement.textContent = getMostExpensiveItem();
+    mostExpensiveElement.textContent = getMostExpensiveItem();
   }
 
   const averagePriceElement = document.getElementById("average-price");
   if (averagePriceElement) {
-      averagePriceElement.textContent = `Средняя стоимость товара в чеке: ${calculateAveragePrice()} руб.`;
+    averagePriceElement.textContent = `Средняя стоимость товара в чеке: ${calculateAveragePrice()} руб.`;
   }
 }
 
 function calculateTotal(): number {
   let total = 0;
-  receipt.forEach(item => {
-      total += item.quantity * item.price;
+  receipt.forEach((item) => {
+    total += item.quantity * item.price;
   });
   return total;
 }
 
 function getMostExpensiveItem(): string {
-  const mostExpensiveItem = receipt.reduce((prev, current) => (prev.price > current.price) ? prev : current);
+  const mostExpensiveItem = receipt.reduce((prev, current) =>
+    prev.price > current.price ? prev : current
+  );
   return `Самая дорогая покупка: ${mostExpensiveItem.name} - ${mostExpensiveItem.price} руб.`;
 }
 
 function calculateAveragePrice(): number {
-  const totalQuantity = receipt.reduce((total, item) => total + item.quantity, 0);
-  const totalPrice = receipt.reduce((total, item) => total + item.quantity * item.price, 0);
+  const totalQuantity = receipt.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+  const totalPrice = receipt.reduce(
+    (total, item) => total + item.quantity * item.price,
+    0
+  );
   return totalPrice / totalQuantity;
 }
-
-
-
-
-
 
 interface ShoppingItem {
   name: string;
@@ -483,23 +511,25 @@ const shoppingList: ShoppingItem[] = [];
 function displayShoppingList(): void {
   const shoppingListElement = document.getElementById("shopping-list");
   if (shoppingListElement) {
-      shoppingListElement.innerHTML = "<h2>Список покупок:</h2>";
-      shoppingList.forEach((item, index) => {
-          const status = item.purchased ? "Куплено" : "Не куплено";
-          shoppingListElement.innerHTML += `
+    shoppingListElement.innerHTML = "<h2>Список покупок:</h2>";
+    shoppingList.forEach((item, index) => {
+      const status = item.purchased ? "Куплено" : "Не куплено";
+      shoppingListElement.innerHTML += `
               <p>${item.name} - ${item.quantity} шт. (${status})
-                  <button onclick="togglePurchase(${index})">${item.purchased ? "Отменить покупку" : "Купить"}</button>
+                  <button onclick="togglePurchase(${index})">${
+        item.purchased ? "Отменить покупку" : "Купить"
+      }</button>
               </p>`;
-      });
+    });
   }
 }
 
 function addItemToShoppingList(name: string, quantity: number): void {
-  const existingItem = shoppingList.find(item => item.name === name);
+  const existingItem = shoppingList.find((item) => item.name === name);
   if (existingItem) {
-      existingItem.quantity += quantity;
+    existingItem.quantity += quantity;
   } else {
-      shoppingList.push({ name, quantity, purchased: false });
+    shoppingList.push({ name, quantity, purchased: false });
   }
   displayShoppingList();
 }
@@ -509,79 +539,298 @@ function togglePurchase(index: number): void {
   displayShoppingList();
 }
 
-// Пример использования функций
 addItemToShoppingList("Яблоки", 3);
 addItemToShoppingList("Молоко", 2);
 
+// 1. Сравнение длины строк:
+
+function compareStrings(str1: string, str2: string): number {
+  if (str1.length > str2.length) {
+    return 1;
+  } else if (str1.length < str2.length) {
+    return -1;
+  } else {
+    return 0;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(compareStrings("hello", "world"));
+
+// 2. Перевод первого символа в верхний регистр:
+
+function capitalizeFirstLetter(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+console.log(capitalizeFirstLetter("hello"));
+
+// 3. Подсчет гласных букв:
+
+function countVowels(str: string): number {
+  const vowels = "aeiouAEIOU";
+  let count = 0;
+  for (let char of str) {
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countVowels("hello"));
+
+// 4. Проверка спама:
+
+function checkForSpam(str: string): boolean {
+  const spamWords: string[] = [
+    "100% бесплатно",
+    "увеличение продаж",
+    "только сегодня",
+    "не удаляйте",
+    "ххх",
+  ];
+  str = str.toLowerCase();
+  return spamWords.some((word) => str.includes(word));
+}
+
+console.log(checkForSpam("Получите увеличение продаж!"));
+
+// 5. Сокращение строки:
+
+function truncate(str: string, maxLength: number): string {
+  if (str.length > maxLength) {
+    return str.slice(0, maxLength) + "...";
+  }
+  return str;
+}
+
+console.log(truncate("Hello, world!", 8));
+
+// 6. Проверка на палиндром:
+
+function isPalindrome(str: string): boolean {
+  const cleanStr = str.toLowerCase().replace(/[\W_]/g, "");
+  const reversedStr = cleanStr.split("").reverse().join("");
+  return cleanStr === reversedStr;
+}
+
+console.log(isPalindrome("А роза упала на лапу Азора"));
+
+// 7. Подсчет количества слов в предложении:
+
+function countWords(sentence: string): number {
+  const words = sentence.split(" ").filter((word) => word.length > 0);
+  return words.length;
+}
+
+console.log(countWords("Это предложение содержит пять слов"));
+
+// 8. Поиск самого длинного слова в предложении:
+
+function longestWord(sentence: string): string {
+  const words = sentence.split(" ").filter((word) => word.length > 0);
+  return words.reduce(
+    (longest, current) => (current.length > longest.length ? current : longest),
+    ""
+  );
+}
+
+console.log(longestWord("Какое слово в этом предложении самое длинное?"));
+
+// 9. Подсчет средней длины слова в предложении:
+
+function averageWordLength(sentence: string): number {
+  const words = sentence.split(" ").filter((word) => word.length > 0);
+  const totalLength = words.reduce((sum, word) => sum + word.length, 0);
+  return totalLength / words.length;
+}
+
+console.log(averageWordLength("Это предложение имеет разные длины слов"));
+
+// 10. Поиск индексов и количества вхождений символа в строке:
+
+function findIndexesAndCount(str: string, char: string): void {
+  const indexes = [];
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === char) {
+      indexes.push(i);
+      count++;
+    }
+  }
+  console.log(`Индексы символа "${char}" в строке: ${indexes.join(", ")}`);
+  console.log(`Общее количество вхождений символа "${char}": ${count}`);
+}
+
+findIndexesAndCount("Этот текст содержит символ 'о'", "о");
+
+// 1. Вывод статистики о строке (количество букв, цифр и других знаков):
+
+function analyzeString(str: string): void {
+  const stats = {
+    letters: 0,
+    digits: 0,
+    other: 0,
+  };
+
+  for (let char of str) {
+    if (char.match(/[a-zA-Z]/)) {
+      stats.letters++;
+    } else if (char.match(/[0-9]/)) {
+      stats.digits++;
+    } else {
+      stats.other++;
+    }
+  }
+
+  console.log("Статистика строки:");
+  console.log(`Буквы: ${stats.letters}`);
+  console.log(`Цифры: ${stats.digits}`);
+  console.log(`Другие символы: ${stats.other}`);
+}
+
+analyzeString("Hello, 123!");
+
+// 2. Преобразование двузначного числа в текстовый вид:
+
+function numberToWords(num: number): string {
+  const units = [
+    "",
+    "один",
+    "два",
+    "три",
+    "четыре",
+    "пять",
+    "шесть",
+    "семь",
+    "восемь",
+    "девять",
+  ];
+  const teens = [
+    "десять",
+    "одиннадцать",
+    "двенадцать",
+    "тринадцать",
+    "четырнадцать",
+    "пятнадцать",
+    "шестнадцать",
+    "семнадцать",
+    "восемнадцать",
+    "девятнадцать",
+  ];
+  const tens = [
+    "",
+    "",
+    "двадцать",
+    "тридцать",
+    "сорок",
+    "пятьдесят",
+    "шестьдесят",
+    "семьдесят",
+    "восемьдесят",
+    "девяносто",
+  ];
+
+  if (num < 10) {
+    return units[num];
+  } else if (num < 20) {
+    return teens[num - 10];
+  } else {
+    const digit = num % 10;
+    const ten = Math.floor(num / 10);
+    return `${tens[ten]} ${units[digit]}`;
+  }
+}
+
+console.log(numberToWords(99));
+
+// 3. Замена символов в строке:
+
+function replaceCharacters(str: string): string {
+  return str
+    .replace(/[a-zA-Z]/g, (char) =>
+      char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()
+    )
+    .replace(/[0-9]/g, "_");
+}
+
+console.log(replaceCharacters("Hello 123 World!"));
+
+// 4. Преобразование названий CSS-стилей в CamelCase:
+
+function cssToCamelCase(cssStyle: string): string {
+  return cssStyle.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+}
+
+console.log(cssToCamelCase("font-size"));
+
+// 5. Преобразование словосочетания в аббревиатуру:
+
+function toAbbreviation(phrase: string): string {
+  return phrase
+    .split(" ")
+    .map((word) => word[0].toUpperCase())
+    .join("");
+}
+
+console.log(toAbbreviation("cascading style sheets"));
+
+// 6. Объединение нескольких строк в одну:
+function combineStrings(...args: string[]): string {
+  return args.join("");
+}
+
+console.log(combineStrings("Hello", ", ", "world", "!"));
+
+// 7. Калькулятор:
+function calculator(expression: string): number {
+  const result = eval(expression);
+  return result;
+}
+
+console.log(calculator("10 + 5 * 2"));
+
+// 8. Получение подробной информации о URL:
+
+function parseUrl(url: string): void {
+  const urlObj = new URL(url);
+  console.log(`Протокол: ${urlObj.protocol}`);
+  console.log(`Домен: ${urlObj.hostname}`);
+  console.log(`Путь: ${urlObj.pathname}`);
+}
+
+parseUrl("https://itstep.org/ua/about");
+
+// 9. Разделение строки по разделителю:
+
+function splitString(str: string, separator: string): string[] {
+  const result = [];
+  let current = "";
+  for (let char of str) {
+    if (char === separator) {
+      result.push(current);
+      current = "";
+    } else {
+      current += char;
+    }
+  }
+  result.push(current);
+  return result;
+}
+
+console.log(splitString("10/08/2020", "/"));
+
+// 10. Вывод текста по заданному шаблону:
+
+function print(template: string, ...args: any[]): string {
+  let result = template;
+  for (let i = 0; i < args.length; i++) {
+    result = result.replace(`%${i + 1}`, args[i]);
+  }
+  return result;
+}
+
+console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 
 //   1. Функция, возвращающая меньшее из двух чисел
 //  let num1 = 4;
