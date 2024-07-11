@@ -1,4 +1,9 @@
-// import './style.css'
+import './style.css'
+
+
+
+
+
 //dz 2.1
 
 //1
@@ -758,11 +763,11 @@ console.log(replaceCharacters("Hello 123 World!"));
 
 // 4. Преобразование названий CSS-стилей в CamelCase:
 
-function cssToCamelCase(cssStyle: string): string {
-  return cssStyle.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
-}
+// function cssToCamelCase(cssStyle: string): string {
+//   return cssStyle.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+// }
 
-console.log(cssToCamelCase("font-size"));
+// console.log(cssToCamelCase("font-size"));
 
 // 5. Преобразование словосочетания в аббревиатуру:
 
@@ -831,6 +836,457 @@ function print(template: string, ...args: any[]): string {
 }
 
 console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
+
+
+//! 1. Функция  calculate  принимает выражение в виде строки и возвращает результат вычислений. 
+ 
+//! 2. Внутри функции определены вспомогательные функции  getNextToken ,  parseExpression ,  parseTerm ,  parseFactor  и  parseNumber , которые помогают разбирать выражение на токены (числа и операторы) и выполнять соответствующие операции. 
+ 
+//! 3. Функция  parseExpression  парсит выражение, состоящее из сложения и вычитания, вызывая функцию  parseTerm  для обработки каждого терма. 
+ 
+//! 4. Функция  parseTerm  парсит терм, состоящий из умножения и деления, вызывая функцию  parseFactor  для обработки каждого фактора. 
+ 
+//! 5. Функция  parseFactor  обрабатывает факторы, которые могут быть числами или выражениями в скобках. Если встречаются скобки, вызывается функция  parseExpression  для вычисления выражения внутри скобок. 
+ 
+//! 6. Функция  parseNumber  извлекает и парсит числа из строки. 
+ 
+//! 7. В конце функции  calculate  вызывается  parseExpression , чтобы начать разбор всего выражения. 
+ 
+//! 8. Результат вычислений возвращается как результат выполнения функции  parseExpression . 
+
+function calculate(expression: string): number {
+  let index: number = 0;
+
+  const getNextToken = (): string => {
+      while (index < expression.length && expression[index] === ' ') {
+          index++;
+      }
+      if (index === expression.length) {
+          return '';
+      }
+      return expression[index++];
+  };
+
+  const parseExpression = (): number => {
+      let result: number = parseTerm();
+      while (true) {
+          const token = getNextToken();
+          if (token !== '+' && token !== '-') {
+              index--;
+              break;
+          }
+          const nextTerm = parseTerm();
+          if (token === '+') {
+              result += nextTerm;
+          } else {
+              result -= nextTerm;
+          }
+      }
+      return result;
+  };
+
+  const parseTerm = (): number => {
+      let result: number = parseFactor();
+      while (true) {
+          const token = getNextToken();
+          if (token !== '*' && token !== '/') {
+              index--;
+              break;
+          }
+          const nextFactor = parseFactor();
+          if (token === '*') {
+              result *= nextFactor;
+          } else {
+              result /= nextFactor;
+          }
+      }
+      return result;
+  };
+
+  const parseFactor = (): number => {
+      const token = getNextToken();
+      if (token === '(') {
+          const result = parseExpression();
+          getNextToken();
+          return result;
+      } else {
+          index--;
+          return parseNumber();
+      }
+  };
+
+  const parseNumber = (): number => {
+      let numStr: string = '';
+      while (index < expression.length && /[0-9]/.test(expression[index])) {
+          numStr += expression[index++];
+      }
+      return parseInt(numStr);
+  };
+
+  return parseExpression();
+}
+
+const expression: string = "(1*5)/(3-1)";
+console.log(calculate(expression));
+
+
+
+
+
+
+
+
+
+// Задание 1
+class Circle {
+  private _radius: number;
+
+  constructor(radius: number) {
+      this._radius = radius;
+  }
+
+  get radius(): number {
+      return this._radius;
+  }
+
+  set radius(value: number) {
+      this._radius = value;
+  }
+
+  get diameter(): number {
+      return this._radius * 2;
+  }
+
+  calculateArea(): number {
+      return Math.PI * this._radius ** 2;
+  }
+
+  calculateCircumference(): number {
+      return 2 * Math.PI * this._radius;
+  }
+}
+
+const myCircle = new Circle(5);
+
+console.log("Радиус окружности:", myCircle.radius);
+console.log("Диаметр окружности:", myCircle.diameter);
+console.log("Площадь окружности:", myCircle.calculateArea());
+console.log("Длина окружности:", myCircle.calculateCircumference());
+
+myCircle.radius = 7;
+console.log("\nПосле изменения радиуса:");
+console.log("Радиус окружности:", myCircle.radius);
+console.log("Диаметр окружности:", myCircle.diameter);
+console.log("Площадь окружности:", myCircle.calculateArea());
+console.log("Длина окружности:", myCircle.calculateCircumference());
+
+
+
+// // Задание 2
+// class HtmlElement {
+//   tagName: string;
+//   selfClosing: boolean;
+//   textContent: string;
+//   attributes: { name: string, value: string }[];
+//   styles: { property: string, value: string }[];
+//   children: HtmlElement[];
+
+//   constructor(tagName: string, selfClosing: boolean = false, textContent: string = '') {
+//       this.tagName = tagName;
+//       this.selfClosing = selfClosing;
+//       this.textContent = textContent;
+//       this.attributes = [];
+//       this.styles = [];
+//       this.children = [];
+//   }
+
+//   setAttribute(name: string, value: string) {
+//       this.attributes.push({ name, value });
+//   }
+
+//   setStyle(property: string, value: string) {
+//       this.styles.push({ property, value });
+//   }
+
+//   appendChild(child: HtmlElement) {
+//       this.children.push(child);
+//   }
+
+//   prependChild(child: HtmlElement) {
+//       this.children.unshift(child);
+//   }
+
+//   getHtml(): string {
+//       let html = `<${this.tagName}`;
+
+//       for (const attr of this.attributes) {
+//           html += ` ${attr.name}="${attr.value}"`;
+//       }
+
+//       for (const style of this.styles) {
+//           html += ` style="${style.property}: ${style.value};"`;
+//       }
+
+//       html += ">";
+
+//       if (!this.selfClosing) {
+//           html += this.textContent;
+//           for (const child of this.children) {
+//               html += child.getHtml();
+//           }
+//           html += `</${this.tagName}>`;
+//       }
+
+//       return html;
+//   }
+// }
+
+// // Пример использования класса HtmlElement
+// const div = new HtmlElement('div', false);
+// div.setStyle('color', 'blue');
+// div.setAttribute('id', 'myDiv');
+
+// const p = new HtmlElement('p', false, 'Hello, World!');
+// const span = new HtmlElement('span', false, 'This is a span.');
+
+// div.appendChild(p);
+// div.appendChild(span);
+
+// document.write(div.getHtml());
+
+
+// // Задание 3
+// class CssClass {
+//   className: string;
+//   styles: { property: string, value: string }[];
+
+//   constructor(className: string) {
+//       this.className = className;
+//       this.styles = [];
+//   }
+
+//   setStyle(property: string, value: string) {
+//       this.styles.push({ property, value });
+//   }
+
+//   removeStyle(property: string) {
+//       this.styles = this.styles.filter(style => style.property !== property);
+//   }
+
+//   getCss(): string {
+//       let css = `.${this.className} {`;
+
+//       for (const style of this.styles) {
+//           css += `${style.property}: ${style.value};`;
+//       }
+
+//       css += "}";
+
+//       return css;
+//   }
+// }
+
+// Пример
+
+// const myClass = new CssClass('myClass');
+// myClass.setStyle('color', 'red');
+// myClass.setStyle('font-size', '16px');
+
+// console.log(myClass.getCss());
+
+
+
+class CssClass {
+  className: string;
+  styles: { property: string, value: string }[];
+
+  constructor(className: string) {
+      this.className = className;
+      this.styles = [];
+  }
+
+  setStyle(property: string, value: string) {
+      this.styles.push({ property, value });
+  }
+
+  removeStyle(property: string) {
+      this.styles = this.styles.filter(style => style.property !== property);
+  }
+
+  getCss(): string {
+      let css = `.${this.className} {`;
+
+      for (const style of this.styles) {
+          css += `${style.property}: ${style.value};`;
+      }
+
+      css += "}";
+
+      return css;
+  }
+}
+
+class HtmlElement {
+  tagName: string;
+  selfClosing: boolean;
+  textContent: string;
+  attributes: { name: string, value: string }[];
+  styles: { property: string, value: string }[];
+  children: HtmlElement[];
+
+  constructor(tagName: string, selfClosing: boolean = false, textContent: string = '') {
+      this.tagName = tagName;
+      this.selfClosing = selfClosing;
+      this.textContent = textContent;
+      this.attributes = [];
+      this.styles = [];
+      this.children = [];
+  }
+
+  setAttribute(name: string, value: string) {
+      this.attributes.push({ name, value });
+  }
+
+  setStyle(property: string, value: string) {
+      this.styles.push({ property, value });
+  }
+
+  appendChild(child: HtmlElement) {
+      this.children.push(child);
+  }
+
+  prependChild(child: HtmlElement) {
+      this.children.unshift(child);
+  }
+
+  getHtml(): string {
+      let html = `<${this.tagName}`;
+
+      for (const attr of this.attributes) {
+          html += ` ${attr.name}="${attr.value}"`;
+      }
+
+      for (const style of this.styles) {
+          html += ` style="${style.property}: ${style.value};"`;
+      }
+
+      html += ">";
+
+      if (!this.selfClosing) {
+          html += this.textContent;
+          for (const child of this.children) {
+              html += child.getHtml();
+          }
+          html += `</${this.tagName}>`;
+      }
+
+      return html;
+  }
+}
+
+class HtmlBlock {
+  styles: CssClass[];
+  rootElement: HtmlElement;
+
+  constructor() {
+      this.styles = [];
+      this.rootElement = new HtmlElement('div', false);
+  }
+
+  addStyle(cssClass: CssClass) {
+      this.styles.push(cssClass);
+  }
+
+  getCode(): string {
+      let code = "<style>";
+      for (const cssClass of this.styles) {
+          code += cssClass.getCss();
+      }
+      code += "</style>";
+
+      code += this.rootElement.getHtml();
+
+      return code;
+  }
+}
+
+
+// Функция для выполнения кода после загрузки DOM
+document.addEventListener("DOMContentLoaded", () => {
+  // Создание экземпляра HtmlBlock
+  const htmlBlock = new HtmlBlock();
+
+  // Добавление стилей и элементов
+  const cssClass = new CssClass('myClass');
+  cssClass.setStyle('color', 'blue');
+  cssClass.setStyle('font-size', '20px');
+  htmlBlock.addStyle(cssClass);
+
+  const div = new HtmlElement('div', false, 'Hello, World!');
+  htmlBlock.rootElement.appendChild(div);
+
+  // Получение сгенерированного HTML кода
+  const generatedHtml = htmlBlock.getCode();
+
+  // Добавление на страницу
+  const contentElement = document.getElementById('content');
+  if (contentElement) {
+      contentElement.innerHTML = generatedHtml;
+  } else {
+      console.error("Element with id 'content' not found.");
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //   1. Функция, возвращающая меньшее из двух чисел
 //  let num1 = 4;
@@ -939,7 +1395,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 // const currentDate = new Date(2024, 0, 31);
 // console.log(`Следующий день после ${currentDate.toLocaleDateString()}: ${getNextDay(currentDate)}`)
 
-// //1
+//1
 // function factorial(n: number): number {
 //     if (n === 0) {
 //         return 1
@@ -950,7 +1406,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 
 // console.log(factorial(3))
 
-// //2
+//2
 // function printNumbersForward(start: number, end: number): void {
 //     if (start <= end) {
 //         console.log(start)
@@ -968,7 +1424,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 // printNumbersForward(1, 5)
 // printNumbersBackward(1, 5)
 
-// //3
+//3
 // function reverseNumber(n: number): number {
 //     if (n < 10) {
 //         return n
@@ -979,7 +1435,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 
 // console.log(reverseNumber(1234))
 
-// //4
+//4
 // function sumOfDigits(n: number): number {
 //     if (n < 10) {
 //         return n
@@ -990,7 +1446,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 
 // console.log(sumOfDigits(1357))
 
-// //5
+//5
 // function generateParenthesesPairs(n: number): string {
 //     if (n === 0) {
 //         return ''
@@ -1001,7 +1457,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 
 // console.log(generateParenthesesPairs(4))
 
-// //1
+//1
 // function power(base: number, exponent: number): number {
 //     if (exponent === 0) {
 //         return 1
@@ -1012,7 +1468,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 
 // console.log(power(2, 3))
 
-// //2
+//2
 
 // function gcd(a: number, b: number): number {
 //     if (b === 0) {
@@ -1023,7 +1479,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 // }
 
 // console.log(gcd(24, 36))
-// //3
+//3
 
 // function maxDigit(n: number): number {
 //     if (n < 10) {
@@ -1037,7 +1493,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 
 // console.log(maxDigit(5839))
 
-// //4
+//4
 // function isPrime(n: number, divisor: number = 2): boolean {
 //     if (n < 2) {
 //         return false
@@ -1054,7 +1510,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 
 // console.log(isPrime(17))
 
-// //5
+//5
 // function factorize(n: number, divisor: number = 2): void {
 //     if (n === 1) {
 //         return
@@ -1069,7 +1525,7 @@ console.log(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020));
 
 // factorize(18)
 
-// //6
+//6
 // function fibonacci(n: number): number {
 //     if (n <= 1) {
 //         return n

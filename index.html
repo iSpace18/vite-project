@@ -15,7 +15,7 @@
     }
     #rect {
       position: absolute;
-      background-color: blueviolet;
+      background-color: rgb(0, 0, 0);
       transition: 1s;
     }
     .numpad {
@@ -37,7 +37,7 @@
       border-radius: 10px;
       border: 1px black solid;
       transition: 0.1s;
-      background-color: palevioletred;
+      background-color: rgb(17, 13, 19);
       color: white;
     }
     .button:hover {
@@ -53,9 +53,93 @@
       font-size: 20px;
       font-weight: bold;
     }
+    .clock{
+      top: 220px;
+      left: 500px;
+    }
+    .numpad{
+      right: 600px;
+      top: -150px;
+      position: relative;
+    }
     </style>
+    <div id="background"></div>
+    <div class="content">
+     
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script>
+      VANTA.GLOBE({ 
+        el: "#background", 
+        mouseControls: true, 
+        touchControls: true, 
+        gyroControls: true, 
+        minHeight: 1000.00, 
+        minWidth: 200.00, 
+        scale: 1.00, 
+        scaleMobile: 1.00 
+      });
+    </script>
+    <div class="clock">
+      <div class="hand hour" id="hour"></div>
+      <div class="hand minute" id="minute"></div>
+      <div class="hand second" id="second"></div>
+      <div class="center-point"></div>
+      <div class="numbers">
+          <div class="number" style="--i:1;">4</div>
+          <div class="number" style="--i:2;">5</div>
+          <div class="number" style="--i:3;">6</div>
+          <div class="number" style="--i:4;">7</div>
+          <div class="number" style="--i:5;">8</div>
+          <div class="number" style="--i:6;">9</div>
+          <div class="number" style="--i:7;">10</div>
+          <div class="number" style="--i:8;">11</div>
+          <div class="number" style="--i:9;">12</div>
+          <div class="number" style="--i:10;">1</div>
+          <div class="number" style="--i:11;">2</div>
+          <div class="number" style="--i:12;">3</div>
+      </div>
+  </div>
 
-<div style="color: white; background-color: rgba(255, 79, 79, 0.425);width: 300px;padding: 20px;">
+
+  <script>
+function updateClock() {
+    const now = new Date();
+    const secondHand = document.getElementById('second');
+    const minuteHand = document.getElementById('minute');
+    const hourHand = document.getElementById('hour');
+
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
+
+    const secondDegrees = ((seconds / 60) * 360) + 90;
+    const minuteDegrees = ((minutes / 60) * 360) + ((seconds / 60) * 6) + 90;
+    const hourDegrees = ((hours / 12) * 360) + ((minutes / 60) * 30) + 90;
+
+    secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+    minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+    hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+}
+
+setInterval(updateClock, 1000);
+updateClock(); // Initial call to set the position of the hands correctly
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div style="color: white; background-color: rgba(255, 79, 79, 0.425);width: 300px;padding: 20px;">
   <label for="name">Название товара</label>
   <input type="text" id="name" placeholder="Название товара">
   <br><br>
@@ -95,6 +179,12 @@ left: 1000px;top: -90px;">
     <br>
     <div id="auditorium-list"></div>
   </div>
+
+  <div id="content">
+    
+  </div>
+
+
     <script>
         class Auditorium {
             constructor(name, seats, faculty) {
@@ -127,12 +217,12 @@ left: 1000px;top: -90px;">
 <br>
 </head>
 <body>
+   -->
   
   <div style="display: flex;">
-    <div id="canvas">
+     <div id="canvas">
       <div id="rect" style="top: 0; left:0">
-
-      </div>
+      </div> 
     </div>
     <div class="numpad">
       <div class="button" id="topLeft"><div style="transform: rotate(-135deg); position: relative;">-&gt;</div></div>
@@ -155,7 +245,7 @@ left: 1000px;top: -90px;">
       <div class="button" id="reduceWidth">&gt;-&lt;</div>
     </div>
   </div>
-  <div id="app"></div>
+  <!-- <div id="app"></div> -->
 </body>
 </html>
 

@@ -1,3 +1,4 @@
+::-webkit-scrollbar { width: 0;}
 body{
   font-family: 'Open Sans',sans-serif;
   background-color: black;
@@ -93,3 +94,115 @@ body{
     position: relative;
     top: 50px;
   }
+  /* .clock {
+    width: 300px;
+    height: 300px;
+    border: 10px solid black;
+    border-radius: 50%;
+    position: relative;
+    background: white;
+}
+
+.hand {
+    width: 50%;
+    height: 6px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.hour {
+    height: 8px;
+    background: black;
+}
+
+.minute {
+    height: 6px;
+    background: black;
+}
+
+.second {
+    height: 2px;
+    background: red;
+}
+
+.center-point {
+    width: 16px;
+    height: 16px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+.clock {
+  width: 350px;
+  height: 350px;
+  border: 10px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  position: relative;
+  background: rgb(255, 255, 255);
+}
+
+.hand {
+  width: 50%;
+  height: 6px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.hour {
+  height: 8px;
+  scale: 0.6;
+  background: black;
+}
+
+.minute {
+  height: 5px;
+  scale: 0.7;
+  background: black;
+}
+
+.second {
+  scale: 0.9;
+  height: 2px;
+  background: red;
+}
+
+.center-point {
+  width: 16px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.numbers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.number {
+  position: absolute;
+  background-color: red;
+  font-size: 2em;
+  background: none;
+  color: black;
+  transform: rotate(calc(30deg * var(--i))) translate(130px) rotate(calc(-30deg * var(--i)));
+}
